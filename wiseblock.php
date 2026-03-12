@@ -236,7 +236,25 @@ class WiseBlock extends Module
             $id_product = (int)$context->controller->getProduct()->id;
         }
 
-        $cacheKey = 'wiseblock_'.$hookName.'_'.$id_shop.'_'.$id_lang.'_'.$id_product;
+        // Build context-aware cache key that accounts for all dynamic factors
+        $customer = $context->customer;
+        $cacheSegments = array(
+            'wiseblock',
+            $hookName,
+            $id_shop,
+            $id_lang,
+            $id_product,
+            $customer ? (int)$customer->id_default_group : 0,
+            (int)$context->currency->id,
+            $customer && $customer->isLogged() ? 'logged' : 'guest',
+        );
+        // Include cart hash for cart-dependent blocks
+        $cart = $context->cart;
+        if ($cart && $cart->nbProducts() > 0) {
+            $cacheSegments[] = md5($cart->getOrderTotal(true) . '_' . $cart->nbProducts());
+        }
+        $cacheKey = implode('_', $cacheSegments);
+
         if (Cache::isStored($cacheKey)) {
             return Cache::retrieve($cacheKey);
         }
@@ -317,8 +335,10 @@ class WiseBlock extends Module
                     $hit = in_array((int)$r['id_object'], $tagIds);
                 }
             } elseif ($r['type'] === 'customer_group') {
-                $hit = (int)Context::getContext()->customer->id_default_group == (int)$r['id_object']
-                       || Context::getContext()->customer->isMemberOfGroup((int)$r['id_object']);
+                $ctxCustomer = Context::getContext()->customer;
+                $hit = $ctxCustomer
+                    && ((int)$ctxCustomer->id_default_group == (int)$r['id_object']
+                        || (method_exists($ctxCustomer, 'isMemberOfGroup') && $ctxCustomer->isMemberOfGroup((int)$r['id_object'])));
             } elseif ($r['type'] === 'country') {
                 $hit = (int)Context::getContext()->country->id == (int)$r['id_object'];
             } elseif ($r['type'] === 'cart_value') {
@@ -427,7 +447,7 @@ class WiseBlock extends Module
     public function hookDisplayProductDescription($params)
     {
         if (isset($params['product']['description'])) {
-            $params['product']['description'] = $this->parseShortcodes($params['product']['description']);
+            return $this->parseShortcodes($params['product']['description']);
         }
         return '';
     }
@@ -509,14 +529,17 @@ class WiseBlock extends Module
 
     private function getParentCategoryIds($id_category)
     {
-        $ids = array();
-        $cat = new Category((int)$id_category, (int)Context::getContext()->language->id);
-        while ($cat && $cat->id_parent && $cat->id_parent != $cat->id) {
-            $ids[] = (int)$cat->id_parent;
-            $cat = new Category((int)$cat->id_parent, (int)Context::getContext()->language->id);
-            if (!$cat->id) break;
+        // Use category tree (nleft/nright) for efficient parent lookup
+        $row = Db::getInstance()->getRow('SELECT nleft, nright FROM '._DB_PREFIX_.'category WHERE id_category='.(int)$id_category);
+        if (!$row) {
+            return array();
         }
-        return $ids;
+        $parents = Db::getInstance()->executeS('
+            SELECT c.id_category
+            FROM '._DB_PREFIX_.'category c
+            WHERE c.nleft < '.(int)$row['nleft'].' AND c.nright > '.(int)$row['nright'].'
+        ');
+        return $parents ? array_map('intval', array_column($parents, 'id_category')) : array();
     }
 
     /** Get tag ids for product and language */
@@ -538,7 +561,7 @@ class WiseBlock extends Module
         $currency = $context->currency->iso_code;
 
         $replacements = array(
-            '{{shop_name}}' => pSQL(Configuration::get('PS_SHOP_NAME'), true),
+            '{{shop_name}}' => htmlspecialchars(Configuration::get('PS_SHOP_NAME')),
         );
 
         // Customer placeholder
@@ -551,12 +574,12 @@ class WiseBlock extends Module
         // Product-based placeholders (only when product context exists)
         if ($id_product) {
             $product = new Product((int)$id_product, true, (int)$id_lang, (int)$id_shop);
-            $replacements['{{product_name}}'] = pSQL($product->name, true);
-            $replacements['{{reference}}'] = pSQL($product->reference, true);
-            $replacements['{{ean13}}'] = pSQL($product->ean13, true);
-            $replacements['{{manufacturer}}'] = pSQL(Manufacturer::getNameById((int)$product->id_manufacturer), true);
-            $replacements['{{category_name}}'] = pSQL($this->getDefaultCategoryName($product, $id_lang), true);
-            $replacements['{{category_description}}'] = $this->getDefaultCategoryDescription($product, $id_lang);
+            $replacements['{{product_name}}'] = htmlspecialchars($product->name);
+            $replacements['{{reference}}'] = htmlspecialchars($product->reference);
+            $replacements['{{ean13}}'] = htmlspecialchars($product->ean13);
+            $replacements['{{manufacturer}}'] = htmlspecialchars(Manufacturer::getNameById((int)$product->id_manufacturer));
+            $replacements['{{category_name}}'] = htmlspecialchars($this->getDefaultCategoryName($product, $id_lang));
+            $replacements['{{category_description}}'] = htmlspecialchars($this->getDefaultCategoryDescription($product, $id_lang));
             $replacements['{{product_url}}'] = $context->link->getProductLink($product);
             $replacements['{{add_to_cart_url}}'] = $this->getAddToCartUrl($product);
             $replacements['{{price}}'] = $locale->formatPrice($product->getPrice(true), $currency);
@@ -904,16 +927,21 @@ class WiseBlock extends Module
         }
     }
 
-    /** Get head_code or footer_code from active blocks */
+    /** Get head_code or footer_code from active blocks (with time/day filtering) */
     private function getActiveBlocksCode($field)
     {
+        // Whitelist allowed field names to prevent SQL injection
+        if (!in_array($field, array('head_code', 'footer_code'), true)) {
+            return '';
+        }
+
         $context = Context::getContext();
         $id_lang = (int)$context->language->id;
         $id_shop = (int)$context->shop->id;
         $now = date('Y-m-d H:i:00');
 
-        $codes = Db::getInstance()->executeS('
-            SELECT bl.'.$field.'
+        $blocks = Db::getInstance()->executeS('
+            SELECT b.days_of_week, b.time_from, b.time_to, bl.'.$field.'
             FROM '._DB_PREFIX_.'wiseblock_block b
             JOIN '._DB_PREFIX_.'wiseblock_block_lang bl ON (b.id_block=bl.id_block AND bl.id_lang='.(int)$id_lang.' AND bl.id_shop='.(int)$id_shop.')
             WHERE b.active=1
@@ -923,8 +951,12 @@ class WiseBlock extends Module
         ');
 
         $out = '';
-        if ($codes) {
-            foreach ($codes as $row) {
+        if ($blocks) {
+            foreach ($blocks as $row) {
+                // Check time and day restrictions
+                if (!$this->isWithinTimeRange($row)) {
+                    continue;
+                }
                 if (!empty($row[$field])) {
                     $out .= $row[$field] . "\n";
                 }
@@ -1026,15 +1058,30 @@ class WiseBlock extends Module
         $context = Context::getContext();
         $id_lang = (int)$context->language->id;
         $id_shop = (int)$context->shop->id;
+        $now = date('Y-m-d H:i:00');
 
         $block = Db::getInstance()->getRow('
             SELECT b.*, bl.content, bl.content_b
             FROM '._DB_PREFIX_.'wiseblock_block b
             JOIN '._DB_PREFIX_.'wiseblock_block_lang bl ON (b.id_block=bl.id_block AND bl.id_lang='.(int)$id_lang.' AND bl.id_shop='.(int)$id_shop.')
             WHERE b.id_block='.(int)$id_block.' AND b.active=1
+              AND (b.publish_from IS NULL OR b.publish_from = "0000-00-00 00:00:00" OR b.publish_from <= "'.pSQL($now).'")
+              AND (b.publish_to IS NULL OR b.publish_to = "0000-00-00 00:00:00" OR b.publish_to >= "'.pSQL($now).'")
         ');
 
         if (!$block) {
+            return '';
+        }
+
+        // Check time and day restrictions
+        if (!$this->isWithinTimeRange($block)) {
+            return '';
+        }
+
+        // Check targeting rules
+        $categoryIds = array();
+        $tagIds = array();
+        if (!$this->matchesRules((int)$block['id_block'], $categoryIds, $tagIds, $id_lang, $block['logic_mode'], 0)) {
             return '';
         }
 

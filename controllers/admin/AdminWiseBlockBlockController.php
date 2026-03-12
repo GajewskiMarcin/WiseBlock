@@ -109,7 +109,7 @@ class AdminWiseBlockBlockController extends ModuleAdminController
         // Build query
         $sql = 'SELECT b.*, COALESCE(NULLIF(bl.title, ""), (SELECT bl2.title FROM '._DB_PREFIX_.'wiseblock_block_lang bl2 WHERE bl2.id_block = b.id_block AND bl2.title != "" LIMIT 1)) as title
                 FROM '._DB_PREFIX_.'wiseblock_block b
-                LEFT JOIN '._DB_PREFIX_.'wiseblock_block_lang bl ON (b.id_block = bl.id_block AND bl.id_lang = '.(int)$this->context->language->id.')
+                LEFT JOIN '._DB_PREFIX_.'wiseblock_block_lang bl ON (b.id_block = bl.id_block AND bl.id_lang = '.(int)$this->context->language->id.' AND bl.id_shop = '.(int)$this->context->shop->id.')
                 WHERE 1=1';
 
         if ($search) {

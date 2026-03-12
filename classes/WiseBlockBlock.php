@@ -18,6 +18,8 @@ class WiseBlockBlock extends ObjectModel
     public $ab_min_views = 500;
     public $ab_winner;
     public $views_count = 0;
+    public $date_add;
+    public $date_upd;
 
     // lang
     public $title;
@@ -47,6 +49,8 @@ class WiseBlockBlock extends ObjectModel
             'ab_min_views' => array('type' => self::TYPE_INT, 'validate' => 'isUnsignedInt'),
             'ab_winner' => array('type' => self::TYPE_STRING, 'validate' => 'isGenericName', 'size' => 1, 'required' => false),
             'views_count' => array('type' => self::TYPE_INT, 'validate' => 'isUnsignedInt'),
+            'date_add' => array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
+            'date_upd' => array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
             // lang
             'title' => array('type' => self::TYPE_STRING, 'lang' => true, 'validate' => 'isCleanHtml', 'size' => 255),
             'content' => array('type' => self::TYPE_HTML, 'lang' => true, 'validate' => 'isCleanHtml'),

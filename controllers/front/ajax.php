@@ -74,6 +74,7 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
 
     /**
      * Track a block view (impression) for stats
+     * Rate-limited: max 1 view per block per session via cookie
      */
     private function ajaxTrackView()
     {
@@ -86,6 +87,13 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
         if (!$id_block) {
             $this->ajaxDie(json_encode(['error' => 'Missing id_block']));
         }
+
+        // Rate limit: one view per block per session
+        $cookieKey = 'wb_v_' . $id_block;
+        if (isset($_COOKIE[$cookieKey])) {
+            $this->ajaxDie(json_encode(['success' => true, 'deduplicated' => true]));
+        }
+        setcookie($cookieKey, '1', 0, '/'); // session cookie
 
         $today = date('Y-m-d');
         $db = Db::getInstance();
@@ -109,6 +117,7 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
 
     /**
      * Track a click within a block for A/B testing
+     * Rate-limited: max 1 click per block per session via cookie
      */
     private function ajaxTrackClick()
     {
@@ -121,6 +130,13 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
         if (!$id_block) {
             $this->ajaxDie(json_encode(['error' => 'Missing id_block']));
         }
+
+        // Rate limit: one click per block per session
+        $cookieKey = 'wb_c_' . $id_block;
+        if (isset($_COOKIE[$cookieKey])) {
+            $this->ajaxDie(json_encode(['success' => true, 'deduplicated' => true]));
+        }
+        setcookie($cookieKey, '1', 0, '/'); // session cookie
 
         $today = date('Y-m-d');
         $db = Db::getInstance();

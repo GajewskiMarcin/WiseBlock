@@ -76,9 +76,6 @@ class AdminWiseBlockToolsController extends ModuleAdminController
 
     protected function renderDashboard()
     {
-        // SUPER SIMPLE DEBUG - no DB, no logic
-        return '<div style="background:orange;color:black;padding:20px;margin:20px 0;font-size:18px;">ORANGE DEBUG - renderDashboard() was called!</div>';
-
         try {
             $activeBlocks = 0;
             $totalRules = 0;
@@ -107,8 +104,7 @@ class AdminWiseBlockToolsController extends ModuleAdminController
         }
 
         // Render stats directly instead of template to avoid caching issues
-        $html = '<div style="background:green;color:white;padding:20px;margin:20px 0;font-size:18px;font-weight:bold;">DEBUG OK: Blocks='.$activeBlocks.' | Rules='.$totalRules.' | Hooks='.$totalHooks.'</div>
-<!-- Stats Cards -->
+        $html = '<!-- Stats Cards -->
 <div class="wb-stats-grid">
     <!-- Active Blocks Card -->
     <div class="wb-stat-card-new wb-stat-blocks">
