@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>wiseblock</name>
+    <displayName><![CDATA[WiseBlock &ndash; kontekstowe bloki HTML]]></displayName>
+    <version><![CDATA[1.4.0]]></version>
+    <description><![CDATA[Tw&oacute;rz i zarządzaj blokami treści kontekstowych przy użyciu elastycznych reguł.]]></description>
+    <author><![CDATA[marcingajewski.pl]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+	<confirmUninstall><![CDATA[Czy na pewno chcesz odinstalować WiseBlock? Wszystkie bloki i ustawienia zostaną usunięte.]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+</module>
