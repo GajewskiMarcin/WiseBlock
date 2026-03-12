@@ -254,8 +254,8 @@ class WiseBlock extends Module
             JOIN '._DB_PREFIX_.'wiseblock_block_hook bh ON (b.id_block=bh.id_block)
             WHERE b.active=1
               AND bh.hook_name="'.pSQL($hookName).'"
-              AND (b.publish_from IS NULL OR b.publish_from <= "'.pSQL($now).'")
-              AND (b.publish_to IS NULL OR b.publish_to >= "'.pSQL($now).'")
+              AND (b.publish_from IS NULL OR b.publish_from = "0000-00-00 00:00:00" OR b.publish_from <= "'.pSQL($now).'")
+              AND (b.publish_to IS NULL OR b.publish_to = "0000-00-00 00:00:00" OR b.publish_to >= "'.pSQL($now).'")
             ORDER BY b.position ASC, b.id_block ASC
         ');
 
@@ -761,6 +761,16 @@ class WiseBlock extends Module
     /** Get free shipping threshold from carriers (price ranges) */
     private function getFreeShippingFromCarriers($id_zone)
     {
+        // PS9 renamed price1/price2 to delimiter1/delimiter2 in range_price
+        $colLow = 'delimiter1';
+        $colHigh = 'delimiter2';
+        $cols = Db::getInstance()->executeS('SHOW COLUMNS FROM '._DB_PREFIX_.'range_price');
+        $colNames = array_column($cols, 'Field');
+        if (in_array('price1', $colNames)) {
+            $colLow = 'price1';
+            $colHigh = 'price2';
+        }
+
         // Find carriers that have free shipping above certain price
         $carriers = Carrier::getCarriers(Context::getContext()->language->id, true, false, $id_zone);
         $minThreshold = 0;
@@ -770,20 +780,20 @@ class WiseBlock extends Module
 
             // Check if carrier has price-based ranges with 0 cost (free shipping)
             $ranges = Db::getInstance()->executeS('
-                SELECT dr.price2 as max_price
+                SELECT dr.`'.$colHigh.'` as max_price
                 FROM '._DB_PREFIX_.'delivery d
                 JOIN '._DB_PREFIX_.'range_price dr ON (d.id_range_price = dr.id_range_price)
                 WHERE d.id_carrier = '.(int)$carrier['id_carrier'].'
                   AND d.id_zone = '.(int)$id_zone.'
                   AND d.price = 0
-                ORDER BY dr.price2 DESC
+                ORDER BY dr.`'.$colHigh.'` DESC
                 LIMIT 1
             ');
 
             if ($ranges && count($ranges) > 0) {
                 // There's a free shipping range, find the minimum price to qualify
                 $freeAbove = Db::getInstance()->getValue('
-                    SELECT MIN(dr.price1) as min_price
+                    SELECT MIN(dr.`'.$colLow.'`) as min_price
                     FROM '._DB_PREFIX_.'delivery d
                     JOIN '._DB_PREFIX_.'range_price dr ON (d.id_range_price = dr.id_range_price)
                     WHERE d.id_carrier = '.(int)$carrier['id_carrier'].'
@@ -908,8 +918,8 @@ class WiseBlock extends Module
             JOIN '._DB_PREFIX_.'wiseblock_block_lang bl ON (b.id_block=bl.id_block AND bl.id_lang='.(int)$id_lang.' AND bl.id_shop='.(int)$id_shop.')
             WHERE b.active=1
               AND bl.'.$field.' IS NOT NULL AND bl.'.$field.' != ""
-              AND (b.publish_from IS NULL OR b.publish_from <= "'.pSQL($now).'")
-              AND (b.publish_to IS NULL OR b.publish_to >= "'.pSQL($now).'")
+              AND (b.publish_from IS NULL OR b.publish_from = "0000-00-00 00:00:00" OR b.publish_from <= "'.pSQL($now).'")
+              AND (b.publish_to IS NULL OR b.publish_to = "0000-00-00 00:00:00" OR b.publish_to >= "'.pSQL($now).'")
         ');
 
         $out = '';
@@ -1054,8 +1064,8 @@ class WiseBlock extends Module
             JOIN '._DB_PREFIX_.'wiseblock_block_lang bl ON (b.id_block=bl.id_block AND bl.id_lang='.(int)$id_lang.' AND bl.id_shop='.(int)$id_shop.')
             JOIN '._DB_PREFIX_.'wiseblock_block_hook bh ON (b.id_block=bh.id_block)
             WHERE b.active=1 AND bh.hook_name="'.pSQL($hookName).'"
-              AND (b.publish_from IS NULL OR b.publish_from <= "'.pSQL($now).'")
-              AND (b.publish_to IS NULL OR b.publish_to >= "'.pSQL($now).'")
+              AND (b.publish_from IS NULL OR b.publish_from = "0000-00-00 00:00:00" OR b.publish_from <= "'.pSQL($now).'")
+              AND (b.publish_to IS NULL OR b.publish_to = "0000-00-00 00:00:00" OR b.publish_to >= "'.pSQL($now).'")
             ORDER BY b.position ASC, b.id_block ASC
         ');
 
