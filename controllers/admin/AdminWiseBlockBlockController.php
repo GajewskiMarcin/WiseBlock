@@ -1774,6 +1774,18 @@ class AdminWiseBlockBlockController extends ModuleAdminController
         return $html;
     }
 
+    public function processDelete()
+    {
+        $id_block = (int)Tools::getValue('id_block');
+        if ($id_block) {
+            $db = Db::getInstance();
+            $db->delete('wiseblock_block_hook', 'id_block='.(int)$id_block);
+            $db->delete('wiseblock_rule', 'id_block='.(int)$id_block);
+            $db->delete('wiseblock_stats', 'id_block='.(int)$id_block);
+        }
+        return parent::processDelete();
+    }
+
     public function postProcess()
     {
         // Handle A/B test reset

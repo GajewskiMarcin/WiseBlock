@@ -355,12 +355,12 @@ class WiseBlock extends Module
                 if ($id_product && $productManufacturer === null) {
                     $productManufacturer = (int)Db::getInstance()->getValue('SELECT id_manufacturer FROM '._DB_PREFIX_.'product WHERE id_product='.(int)$id_product);
                 }
-                $hit = $productManufacturer == (int)$r['id_object'];
+                $hit = $productManufacturer !== null && (int)$productManufacturer === (int)$r['id_object'];
             } elseif ($r['type'] === 'supplier') {
                 if ($id_product && $productSupplier === null) {
                     $productSupplier = (int)Db::getInstance()->getValue('SELECT id_supplier FROM '._DB_PREFIX_.'product WHERE id_product='.(int)$id_product);
                 }
-                $hit = $productSupplier == (int)$r['id_object'];
+                $hit = $productSupplier !== null && (int)$productSupplier === (int)$r['id_object'];
             } elseif ($r['type'] === 'feature') {
                 if ($id_product && $productFeatureValues === null) {
                     $productFeatureValues = array();
@@ -369,7 +369,7 @@ class WiseBlock extends Module
                         $productFeatureValues[] = (int)$fv['id_feature_value'];
                     }
                 }
-                $hit = in_array((int)$r['id_object'], $productFeatureValues);
+                $hit = is_array($productFeatureValues) && in_array((int)$r['id_object'], $productFeatureValues);
             } elseif ($r['type'] === 'cart_product') {
                 // Check if specific product(s) are in the cart
                 $cart = Context::getContext()->cart;
@@ -441,6 +441,7 @@ class WiseBlock extends Module
 
     public function hookDisplayCMSContent($params)
     {
+        if (!isset($params['content'])) { return ''; }
         return $this->parseShortcodes($params['content']);
     }
 
@@ -457,7 +458,7 @@ class WiseBlock extends Module
         if (empty($content)) { return $content; }
         return preg_replace_callback('/\[wiseblock\s+id="(\d+)"\]/', function($m) {
             $id_block = (int)$m[1];
-            $block = new WiseBlockBlock($id_block, (int)$this->context->language->id);
+            $block = new WiseBlockBlock($id_block, (int)$this->context->language->id, (int)$this->context->shop->id);
             if ($block->id && $block->active) {
                 return $block->content;
             }
@@ -653,7 +654,9 @@ class WiseBlock extends Module
             }
 
             // {{#if_on_sale}}...{{/if_on_sale}} - shows when product has reduction
-            $hasReduction = $product->specificPrice || $product->getPrice(true) < $product->getPrice(true, null, 6, null, false, false);
+            $priceWithReduction = Product::getPriceStatic((int)$product->id, true);
+            $priceWithoutReduction = Product::getPriceStatic((int)$product->id, true, null, 6, null, false, false);
+            $hasReduction = $priceWithoutReduction > 0 && $priceWithReduction < $priceWithoutReduction;
             if (!$hasReduction) {
                 $html = preg_replace('/\{\{#if_on_sale\}\}.*?\{\{\/if_on_sale\}\}/s', '', $html);
             } else {
