@@ -30,8 +30,26 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
                 $this->ajaxTrackClick();
                 break;
             default:
-                $this->ajaxDie(json_encode(['error' => 'Unknown action']));
+                $this->ajaxJson(json_encode(['error' => 'Unknown action']));
         }
+    }
+
+    /**
+     * Send a JSON response and stop execution.
+     *
+     * Portable across PrestaShop 1.7 / 8 / 9: the legacy Controller::ajaxDie()
+     * helper was removed in PS9, so relying on it caused a fatal error there
+     * (breaking lazy loading, auto-refresh and view/click tracking). ajaxRender()
+     * exists on all supported versions; it only echoes the payload, so we exit
+     * afterwards to prevent the full page template from being appended.
+     *
+     * @param string $json Pre-encoded JSON string
+     */
+    private function ajaxJson($json)
+    {
+        header('Content-Type: application/json');
+        $this->ajaxRender($json);
+        exit;
     }
 
     /**
@@ -41,12 +59,15 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
     {
         $id_block = (int)Tools::getValue('id_block');
         if (!$id_block) {
-            $this->ajaxDie(json_encode(['error' => 'Missing id_block']));
+            $this->ajaxJson(json_encode(['error' => 'Missing id_block']));
         }
 
-        $html = $this->module->renderBlockById($id_block);
+        // Optional product context (product pages) so targeting rules re-evaluate correctly
+        $id_product = (int)Tools::getValue('id_product');
 
-        $this->ajaxDie(json_encode([
+        $html = $this->module->renderBlockById($id_block, $id_product);
+
+        $this->ajaxJson(json_encode([
             'success' => true,
             'id_block' => $id_block,
             'html' => $html,
@@ -60,12 +81,12 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
     {
         $hookName = Tools::getValue('hook');
         if (!$hookName) {
-            $this->ajaxDie(json_encode(['error' => 'Missing hook']));
+            $this->ajaxJson(json_encode(['error' => 'Missing hook']));
         }
 
         $html = $this->module->renderHookBlocks(pSQL($hookName));
 
-        $this->ajaxDie(json_encode([
+        $this->ajaxJson(json_encode([
             'success' => true,
             'hook' => $hookName,
             'html' => $html,
@@ -85,13 +106,13 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
         }
 
         if (!$id_block) {
-            $this->ajaxDie(json_encode(['error' => 'Missing id_block']));
+            $this->ajaxJson(json_encode(['error' => 'Missing id_block']));
         }
 
         // Rate limit: one view per block per session
         $cookieKey = 'wb_v_' . $id_block;
         if (isset($_COOKIE[$cookieKey])) {
-            $this->ajaxDie(json_encode(['success' => true, 'deduplicated' => true]));
+            $this->ajaxJson(json_encode(['success' => true, 'deduplicated' => true]));
         }
         setcookie($cookieKey, '1', 0, '/'); // session cookie
 
@@ -112,7 +133,7 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
             WHERE `id_block` = '.(int)$id_block
         );
 
-        $this->ajaxDie(json_encode(['success' => true]));
+        $this->ajaxJson(json_encode(['success' => true]));
     }
 
     /**
@@ -128,13 +149,13 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
         }
 
         if (!$id_block) {
-            $this->ajaxDie(json_encode(['error' => 'Missing id_block']));
+            $this->ajaxJson(json_encode(['error' => 'Missing id_block']));
         }
 
         // Rate limit: one click per block per session
         $cookieKey = 'wb_c_' . $id_block;
         if (isset($_COOKIE[$cookieKey])) {
-            $this->ajaxDie(json_encode(['success' => true, 'deduplicated' => true]));
+            $this->ajaxJson(json_encode(['success' => true, 'deduplicated' => true]));
         }
         setcookie($cookieKey, '1', 0, '/'); // session cookie
 
@@ -148,6 +169,6 @@ class WiseBlockAjaxModuleFrontController extends ModuleFrontController
             ON DUPLICATE KEY UPDATE `clicks` = `clicks` + 1
         ');
 
-        $this->ajaxDie(json_encode(['success' => true]));
+        $this->ajaxJson(json_encode(['success' => true]));
     }
 }

@@ -294,6 +294,8 @@ class WiseBlock extends Module
                 $b['_auto_refresh'] = !empty($b['auto_refresh']);
                 $b['_lazy_load'] = !empty($b['lazy_load']);
                 $b['_variant'] = ($b['ab_variant'] !== 'none') ? $variant : '';
+                // Current product context, so AJAX refresh/lazy can re-evaluate rules with the same context
+                $b['_id_product'] = (int)$id_product;
 
                 $context->smarty->assign(array('content' => $content, 'block' => $b));
                 $out .= $this->fetch('module:'.$this->name.'/views/templates/hook/block.tpl');
@@ -718,6 +720,30 @@ class WiseBlock extends Module
             $html = str_replace(array('{{#if_guest}}', '{{/if_guest}}'), '', $html);
         }
 
+        // Allow other modules to register custom placeholders via hook
+        // Returns array keyed by module name: ['modulename' => ['{{foo}}' => 'bar']]
+        // Modules must escape values themselves (htmlspecialchars / (int) cast)
+        $externalResults = Hook::exec('actionWiseBlockRegisterPlaceholders', array(
+            'id_product'  => (int)$id_product,
+            'id_lang'     => (int)$id_lang,
+            'id_shop'     => (int)$id_shop,
+            'id_cart'     => $cart ? (int)$cart->id : null,
+            'id_customer' => $customer ? (int)$customer->id : 0,
+            'customer'    => $customer,
+        ), null, true);
+        if (is_array($externalResults)) {
+            foreach ($externalResults as $moduleResult) {
+                if (is_array($moduleResult)) {
+                    // External placeholders should not override built-in ones
+                    foreach ($moduleResult as $key => $value) {
+                        if (!isset($replacements[$key])) {
+                            $replacements[$key] = $value;
+                        }
+                    }
+                }
+            }
+        }
+
         return strtr($html, $replacements);
     }
 
@@ -899,22 +925,30 @@ class WiseBlock extends Module
         // Save UTM parameters to cookies for later use in targeting rules
         $this->saveUtmToCookies();
 
-        $out = '';
-
-        $customCSS = Configuration::get('WISEBLOCK_CUSTOM_CSS');
-        if (!empty($customCSS)) {
-            $out .= '<style type="text/css">' . $customCSS . '</style>';
-        }
-
         // Inject head_code from active blocks for current page
-        $out .= $this->getActiveBlocksCode('head_code');
-
-        return $out;
+        return $this->getActiveBlocksCode('head_code');
     }
 
-    /** Hook actionFrontControllerSetMedia - register JS assets */
+    /** Hook actionFrontControllerSetMedia - register CSS/JS assets */
     public function hookActionFrontControllerSetMedia($params)
     {
+        // Register custom CSS as external file (cacheable by browser)
+        // Auto-generate file from DB if missing (e.g. after module update)
+        $cssFile = _PS_MODULE_DIR_.$this->name.'/views/css/wiseblock-custom.css';
+        if (!file_exists($cssFile)) {
+            $css = Configuration::get('WISEBLOCK_CUSTOM_CSS');
+            if (!empty($css)) {
+                file_put_contents($cssFile, $css);
+            }
+        }
+        if (file_exists($cssFile) && filesize($cssFile) > 0) {
+            $this->context->controller->registerStylesheet(
+                'wiseblock-custom-css',
+                'modules/'.$this->name.'/views/css/wiseblock-custom.css',
+                array('media' => 'all', 'priority' => 200)
+            );
+        }
+
         // Check if any blocks need refresh or lazy loading
         $hasRefreshOrLazy = (int)Db::getInstance()->getValue('
             SELECT COUNT(*) FROM '._DB_PREFIX_.'wiseblock_block
@@ -1056,11 +1090,12 @@ class WiseBlock extends Module
     }
 
     /** Render a single block by ID (used by AJAX refresh controller) */
-    public function renderBlockById($id_block)
+    public function renderBlockById($id_block, $id_product = 0)
     {
         $context = Context::getContext();
         $id_lang = (int)$context->language->id;
         $id_shop = (int)$context->shop->id;
+        $id_product = (int)$id_product;
         $now = date('Y-m-d H:i:00');
 
         $block = Db::getInstance()->getRow('
@@ -1081,10 +1116,11 @@ class WiseBlock extends Module
             return '';
         }
 
-        // Check targeting rules
-        $categoryIds = array();
-        $tagIds = array();
-        if (!$this->matchesRules((int)$block['id_block'], $categoryIds, $tagIds, $id_lang, $block['logic_mode'], 0)) {
+        // Check targeting rules — rebuild the same category/tag context the hook render uses,
+        // so lazy/refresh blocks with product-page rules behave identically to the initial render
+        $categoryIds = $id_product ? $this->getProductCategoryTreeIds($id_product) : array();
+        $tagIds = $id_product ? $this->getProductTagIds($id_product, $id_lang) : array();
+        if (!$this->matchesRules((int)$block['id_block'], $categoryIds, $tagIds, $id_lang, $block['logic_mode'], $id_product)) {
             return '';
         }
 
@@ -1092,7 +1128,7 @@ class WiseBlock extends Module
         $variant = $this->getABVariant($block);
         $contentSource = ($variant === 'B' && !empty($block['content_b'])) ? $block['content_b'] : $block['content'];
 
-        return $this->renderPlaceholders($contentSource, 0, $id_lang, $id_shop);
+        return $this->renderPlaceholders($contentSource, $id_product, $id_lang, $id_shop);
     }
 
     /** Render all blocks for a hook (used by AJAX refresh controller) */

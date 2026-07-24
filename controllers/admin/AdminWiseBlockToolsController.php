@@ -370,6 +370,13 @@ class AdminWiseBlockToolsController extends ModuleAdminController
         if (Tools::isSubmit('submitWiseBlockCustomCSS')) {
             $customCSS = Tools::getValue('wiseblock_custom_css', '');
             Configuration::updateValue('WISEBLOCK_CUSTOM_CSS', $customCSS, true);
+            // Generate static CSS file for frontend performance (cacheable by browser)
+            $cssPath = _PS_MODULE_DIR_.'wiseblock/views/css/wiseblock-custom.css';
+            if (!empty($customCSS)) {
+                file_put_contents($cssPath, $customCSS);
+            } elseif (file_exists($cssPath)) {
+                unlink($cssPath);
+            }
             $this->confirmations[] = $this->_l('Custom CSS has been saved.');
         }
     }

@@ -14,7 +14,7 @@
     <div class="wb-tool-card-body">
 
         <!-- Product -->
-        <div class="wb-ph-group">
+        <div class="wb-ph-group wb-ph-collapsed">
             <div class="wb-ph-group-header" onclick="this.parentElement.classList.toggle('wb-ph-collapsed')">
                 <span class="wb-ph-group-icon">🛒</span>
                 <span class="wb-ph-group-title">{l s='Product' mod='wiseblock'}</span>
@@ -41,7 +41,7 @@
         </div>
 
         <!-- Shop & Search -->
-        <div class="wb-ph-group">
+        <div class="wb-ph-group wb-ph-collapsed">
             <div class="wb-ph-group-header" onclick="this.parentElement.classList.toggle('wb-ph-collapsed')">
                 <span class="wb-ph-group-icon">🏪</span>
                 <span class="wb-ph-group-title">{l s='Shop & Search' mod='wiseblock'}</span>
@@ -58,7 +58,7 @@
         </div>
 
         <!-- Cart -->
-        <div class="wb-ph-group">
+        <div class="wb-ph-group wb-ph-collapsed">
             <div class="wb-ph-group-header" onclick="this.parentElement.classList.toggle('wb-ph-collapsed')">
                 <span class="wb-ph-group-icon">🛍️</span>
                 <span class="wb-ph-group-title">{l s='Cart' mod='wiseblock'}</span>
@@ -75,7 +75,7 @@
         </div>
 
         <!-- Free Shipping -->
-        <div class="wb-ph-group">
+        <div class="wb-ph-group wb-ph-collapsed">
             <div class="wb-ph-group-header" onclick="this.parentElement.classList.toggle('wb-ph-collapsed')">
                 <span class="wb-ph-group-icon">🚚</span>
                 <span class="wb-ph-group-title">{l s='Free Shipping' mod='wiseblock'}</span>
@@ -97,10 +97,11 @@
         </div>
 
         <!-- Conditional Blocks -->
-        <div class="wb-ph-group">
+        <div class="wb-ph-group wb-ph-collapsed">
             <div class="wb-ph-group-header" onclick="this.parentElement.classList.toggle('wb-ph-collapsed')">
                 <span class="wb-ph-group-icon">🔀</span>
                 <span class="wb-ph-group-title">{l s='Conditional Blocks' mod='wiseblock'}</span>
+                <span class="wb-ph-group-badge wb-ph-badge-blue">{l s='Depends on context' mod='wiseblock'}</span>
                 <svg class="wb-ph-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
             <div class="wb-ph-group-body">
@@ -155,6 +156,7 @@
 .wb-ph-group-title { font-weight:600; font-size:14px; color:#1f2937; flex:1; }
 .wb-ph-group-badge { font-size:11px; padding:2px 8px; border-radius:10px; background:#fef3c7; color:#92400e; font-weight:500; }
 .wb-ph-badge-green { background:#d1fae5; color:#065f46; }
+.wb-ph-badge-blue { background:#dbeafe; color:#1e40af; }
 .wb-ph-chevron { transition:transform .2s; color:#9ca3af; flex-shrink:0; }
 .wb-ph-collapsed .wb-ph-group-body { display:none; }
 .wb-ph-collapsed .wb-ph-chevron { transform:rotate(-90deg); }

@@ -9,24 +9,49 @@
     var ajaxUrl = prestashop.urls ? prestashop.urls.base_url : '/';
     ajaxUrl += 'index.php?fc=module&module=wiseblock&controller=ajax';
 
+    // Log helper — surfaces failures instead of swallowing them, which previously
+    // made a broken AJAX endpoint (e.g. a server 500) look like an empty block.
+    function wbWarn(context, err) {
+        if (window.console && console.warn) {
+            console.warn('[WiseBlock] ' + context, err);
+        }
+    }
+
+    // Append the current product context (if the block was rendered on a product page)
+    // so the server re-evaluates targeting rules with the same context as the initial render.
+    function withProduct(url, blockEl) {
+        var idProduct = blockEl.getAttribute('data-wiseblock-product');
+        if (idProduct && idProduct !== '0') {
+            url += '&id_product=' + encodeURIComponent(idProduct);
+        }
+        return url;
+    }
+
     // ========== AJAX REFRESH ON CART UPDATE ==========
 
     function refreshBlock(blockEl) {
         var idBlock = blockEl.getAttribute('data-wiseblock-id');
         if (!idBlock) return;
 
-        fetch(ajaxUrl + '&action=refreshBlock&id_block=' + idBlock, {
+        var url = withProduct(ajaxUrl + '&action=refreshBlock&id_block=' + idBlock, blockEl);
+        fetch(url, {
             method: 'GET',
             headers: { 'X-Requested-With': 'XMLHttpRequest' }
         })
-        .then(function(response) { return response.json(); })
+        .then(function(response) {
+            if (!response.ok) { throw new Error('HTTP ' + response.status); }
+            return response.json();
+        })
         .then(function(data) {
             if (data.success && data.html !== undefined) {
                 blockEl.innerHTML = data.html;
+            } else if (data.error) {
+                wbWarn('refreshBlock ' + idBlock + ' returned error: ' + data.error);
             }
         })
-        .catch(function() {
-            // Silently fail - block keeps old content
+        .catch(function(err) {
+            // Keep old content, but make the failure visible for debugging
+            wbWarn('refreshBlock ' + idBlock + ' failed', err);
         });
     }
 
@@ -73,18 +98,26 @@
         var idBlock = blockEl.getAttribute('data-wiseblock-id');
         if (!idBlock) return;
 
-        fetch(ajaxUrl + '&action=refreshBlock&id_block=' + idBlock, {
+        var url = withProduct(ajaxUrl + '&action=refreshBlock&id_block=' + idBlock, blockEl);
+        fetch(url, {
             method: 'GET',
             headers: { 'X-Requested-With': 'XMLHttpRequest' }
         })
-        .then(function(response) { return response.json(); })
+        .then(function(response) {
+            if (!response.ok) { throw new Error('HTTP ' + response.status); }
+            return response.json();
+        })
         .then(function(data) {
             if (data.success && data.html !== undefined) {
                 blockEl.innerHTML = data.html;
                 blockEl.removeAttribute('data-wiseblock-lazy');
+            } else if (data.error) {
+                wbWarn('lazy block ' + idBlock + ' returned error: ' + data.error);
             }
         })
-        .catch(function() {});
+        .catch(function(err) {
+            wbWarn('lazy block ' + idBlock + ' failed to load', err);
+        });
     }
 
     // ========== VIEW TRACKING ==========

@@ -55,8 +55,8 @@ class WiseBlockBlock extends ObjectModel
             'title' => array('type' => self::TYPE_STRING, 'lang' => true, 'validate' => 'isCleanHtml', 'size' => 255),
             'content' => array('type' => self::TYPE_HTML, 'lang' => true),
             'content_b' => array('type' => self::TYPE_HTML, 'lang' => true, 'required' => false),
-            'head_code' => array('type' => self::TYPE_HTML, 'lang' => true, 'required' => false),
-            'footer_code' => array('type' => self::TYPE_HTML, 'lang' => true, 'required' => false),
+            'head_code' => array('type' => self::TYPE_NOTHING, 'lang' => true, 'required' => false),
+            'footer_code' => array('type' => self::TYPE_NOTHING, 'lang' => true, 'required' => false),
         )
     );
 

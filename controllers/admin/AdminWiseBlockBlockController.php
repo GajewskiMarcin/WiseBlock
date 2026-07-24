@@ -2082,8 +2082,10 @@ class AdminWiseBlockBlockController extends ModuleAdminController
             $block->title[$id_lang] = Tools::getValue('title_'.$id_lang, '');
             $block->content[$id_lang] = Tools::getValue('content_'.$id_lang, '');
             $block->content_b[$id_lang] = Tools::getValue('content_b_'.$id_lang, '');
-            $block->head_code[$id_lang] = Tools::getValue('head_code_'.$id_lang, '');
-            $block->footer_code[$id_lang] = Tools::getValue('footer_code_'.$id_lang, '');
+            // head_code and footer_code are saved via direct SQL after ObjectModel save
+            // to bypass PrestaShop's HTML purifier which strips <script> tags
+            $block->head_code[$id_lang] = '';
+            $block->footer_code[$id_lang] = '';
         }
 
         // Save
@@ -2095,6 +2097,20 @@ class AdminWiseBlockBlockController extends ModuleAdminController
             }
 
             if ($result) {
+                // Save head_code and footer_code directly via SQL to bypass any ObjectModel filtering
+                // These fields intentionally contain <script> tags and event handlers
+                $db = Db::getInstance();
+                foreach ($languages as $lang) {
+                    $lid = (int)$lang['id_lang'];
+                    $sid = (int)$this->context->shop->id;
+                    $hc = $db->escape(Tools::getValue('head_code_'.$lid, ''), true);
+                    $fc = $db->escape(Tools::getValue('footer_code_'.$lid, ''), true);
+                    $db->execute("UPDATE `"._DB_PREFIX_."wiseblock_block_lang` SET
+                        `head_code` = '".$hc."',
+                        `footer_code` = '".$fc."'
+                        WHERE `id_block` = ".(int)$block->id." AND `id_lang` = ".$lid." AND `id_shop` = ".$sid);
+                }
+
                 // Save hooks
                 $hooks = Tools::getValue('hooks');
                 if (is_array($hooks)) {

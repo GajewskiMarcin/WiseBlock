@@ -1,0 +1,249 @@
+/* ==========================================================================
+   Promo Card — Base Component
+   ========================================================================== */
+
+.promo-card {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 280px;
+    height: 100%;
+    border-radius: var(--flavor-radius-md);
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--flavor-text-heading);
+    background: var(--flavor-bg-surface);
+}
+
+a.promo-card {
+    cursor: pointer;
+}
+
+.promo-card__link {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+}
+
+.promo-card:has(.promo-card__link) {
+    cursor: pointer;
+}
+
+/* --- Image Layer --- */
+
+.promo-card__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 1;
+    transition: transform 0.4s ease;
+    pointer-events: none;
+}
+
+.promo-card:hover .promo-card__image--zoom {
+    transform: scale(1.06);
+}
+
+.promo-card:hover .promo-card__image--push {
+    transform: translateX(8px);
+}
+
+.promo-card__image--left {
+    right: auto;
+    left: 0;
+    object-position: left center;
+}
+
+.promo-card__image--center {
+    right: 0;
+    left: 0;
+    width: 100%;
+    object-position: center center;
+}
+
+.promo-card__image--contain {
+    object-fit: contain;
+    object-position: right center;
+}
+
+.promo-card__image--cover {
+    left: 0;
+    width: 100%;
+}
+
+/* --- Gradient --- */
+
+.promo-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        to right,
+        var(--promo-bg, var(--flavor-bg-surface)) 35%,
+        transparent 75%
+    );
+    pointer-events: none;
+}
+
+/* --- Content --- */
+
+.promo-card__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 28px;
+    max-width: 60%;
+}
+
+.promo-card__subtitle {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.promo-card__heading {
+    font-family: var(--flavor-font-heading);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 800;
+    color: inherit;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.promo-card__text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.85;
+}
+
+.promo-card__btn {
+    align-self: flex-start;
+    margin-top: 4px;
+}
+
+/* --- Variants --- */
+
+.promo-card--light {
+    color: #ffffff;
+}
+
+.promo-card--light .promo-card__subtitle {
+    opacity: 0.85;
+}
+
+.promo-card--light .promo-card__text {
+    opacity: 0.8;
+}
+
+.promo-card--no-gradient::after {
+    display: none;
+}
+
+.promo-card--sm {
+    min-height: 200px;
+}
+
+.promo-card--lg {
+    min-height: 360px;
+}
+
+/* --- Context: Product Row Promo --- */
+
+.product-row__promo .promo-card {
+    height: 100%;
+}
+
+/* --- Context: Listing Grid --- */
+
+.listing-grid__promo {
+    min-height: 0;
+}
+
+.listing-grid__promo .promo-card {
+    height: 100%;
+}
+
+.listing-grid__banner {
+    grid-column: 1 / -1;
+}
+
+.listing-grid__banner .promo-card {
+    min-height: 160px;
+    align-items: center;
+}
+
+.listing-grid__banner .promo-card__content {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.listing-cta {
+    margin-top: 40px;
+}
+
+.listing-cta .promo-card {
+    min-height: 200px;
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 767px) {
+    .promo-card {
+        min-height: 220px;
+    }
+
+    .promo-card__content {
+        padding: 20px;
+        max-width: 100% !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .promo-card__heading {
+        font-size: 1.2rem;
+    }
+
+    .promo-card--lg {
+        min-height: 260px;
+    }
+
+    .product-row__promo .promo-card {
+        min-height: 200px;
+    }
+
+    .listing-grid__banner .promo-card {
+        min-height: 140px;
+    }
+
+    .listing-grid__banner .promo-card__heading {
+        font-size: 1.1rem;
+    }
+
+    .listing-grid__banner .promo-card__content {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .listing-grid__banner .promo-card__btn {
+        margin-top: 8px !important;
+    }
+
+    .listing-cta .promo-card {
+        min-height: 180px;
+    }
+
+    .listing-cta .promo-card__content {
+        max-width: 100% !important;
+    }
+}
