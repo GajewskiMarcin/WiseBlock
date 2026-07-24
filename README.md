@@ -391,4 +391,6 @@ Created by [marcingajewski.pl](https://marcingajewski.pl)
 
 ## License
 
-This module is provided as-is for use with PrestaShop.
+WiseBlock is released under the **Academic Free License 3.0 (AFL-3.0)** — the license recommended by PrestaShop for modules. See the [LICENSE](LICENSE) file for the full text.
+
+© 2026 Marcin Gajewski ([marcingajewski.pl](https://marcingajewski.pl))

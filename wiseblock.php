@@ -1,4 +1,11 @@
 <?php
+/**
+ * WiseBlock - Contextual HTML Content Blocks for PrestaShop
+ *
+ * @author    Marcin Gajewski (marcingajewski.pl)
+ * @copyright 2026 Marcin Gajewski
+ * @license   https://opensource.org/licenses/AFL-3.0  Academic Free License 3.0 (AFL-3.0)
+ */
 if (!defined('_PS_VERSION_')) { exit; }
 
 require_once __DIR__.'/classes/WiseBlockBlock.php';
