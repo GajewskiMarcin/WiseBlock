@@ -377,6 +377,10 @@ class AdminWiseBlockToolsController extends ModuleAdminController
             } elseif (file_exists($cssPath)) {
                 unlink($cssPath);
             }
+            // Bust the combined CSS bundle (CCC). Without this, PrestaShop keeps serving the
+            // previously cached themes/*/assets/cache/theme-*.css, so edited/added styles never
+            // reach the frontend until the cache is cleared manually.
+            Media::clearCache();
             $this->confirmations[] = $this->_l('Custom CSS has been saved.');
         }
     }
