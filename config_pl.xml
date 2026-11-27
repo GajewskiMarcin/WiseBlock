@@ -2,7 +2,7 @@
 <module>
     <name>wiseblock</name>
     <displayName><![CDATA[WiseBlock &ndash; kontekstowe bloki HTML]]></displayName>
-    <version><![CDATA[1.4.0]]></version>
+    <version><![CDATA[1.4.1]]></version>
     <description><![CDATA[Tw&oacute;rz i zarządzaj blokami treści kontekstowych przy użyciu elastycznych reguł.]]></description>
     <author><![CDATA[marcingajewski.pl]]></author>
     <tab><![CDATA[front_office_features]]></tab>

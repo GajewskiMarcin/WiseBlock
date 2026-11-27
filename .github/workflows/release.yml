@@ -1,0 +1,74 @@
+# Release of WiseBlock.
+#
+# Pushing a tag vX.Y.Z builds the installable ZIP (folder "wiseblock/") and
+# attaches it to a GitHub release. The tag has to match $this->version in
+# wiseblock.php and config.xml, and CHANGELOG.md needs a section for that
+# version; otherwise the run stops before anything is published.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    env:
+      MODULE: wiseblock
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: Read version from tag
+        id: version
+        run: echo "value=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Check that the tag matches the module version
+        run: |
+          v="${{ steps.version.outputs.value }}"
+          grep -q "\$this->version = '$v';" wiseblock.php || { echo "wiseblock.php is not version $v"; exit 1; }
+          grep -q "<version><!\[CDATA\[$v\]\]></version>" config.xml || { echo "config.xml is not version $v"; exit 1; }
+
+      # The package holds the module files only: no repository metadata.
+      - name: Build package
+        run: |
+          mkdir -p "build/$MODULE"
+          git archive --format=tar HEAD | tar -x -C "build/$MODULE"
+          rm -rf "build/$MODULE/.github" "build/$MODULE/.gitignore"
+
+      - name: Lint PHP in the package
+        run: find "build/$MODULE" -name '*.php' -print0 | xargs -0 -n1 php -l > /dev/null
+
+      - name: Zip
+        run: cd build && zip -qr "../$MODULE.zip" "$MODULE"
+
+      # Release notes are the CHANGELOG section of this version.
+      - name: Release notes
+        run: |
+          awk -v v="${{ steps.version.outputs.value }}" '
+            $0 ~ "^## \\[" v "\\]" { on = 1; next }
+            on && /^## \[/ { exit }
+            on { print }
+          ' CHANGELOG.md > notes.md
+          test -s notes.md || { echo "CHANGELOG.md has no section for ${{ steps.version.outputs.value }}"; exit 1; }
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "$MODULE.zip" \
+            --title "WiseBlock ${{ steps.version.outputs.value }}" \
+            --notes-file notes.md
