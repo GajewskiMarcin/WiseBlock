@@ -56,7 +56,12 @@ $_MODULE['<{wiseblock}prestashop>about_ac26bdde7ed74ae06f2deeeb1522f10d'] = 'Pri
 $_MODULE['<{wiseblock}prestashop>about_197b057f8d73ded07f9d4dd27678473d'] = 'Pridruži se razpravi';
 $_MODULE['<{wiseblock}prestashop>about_519cd44a1ebb9264df8f1fb153857995'] = 'Podprite projekt';
 $_MODULE['<{wiseblock}prestashop>about_5ade246f54e3056845642aee3bd83eae'] = 'Če vam je WiseBlock koristen, razmislite o podpori razvoja';
-$_MODULE['<{wiseblock}prestashop>about_41ce98493ec922bf9b7ea03f749aef64'] = 'Kupi mi kavo';
+$_MODULE['<{wiseblock}prestashop>about_5dc4a5bd36dc8b81f76f1336858f6864'] = 'Podpri na Ko-fi';
+$_MODULE['<{wiseblock}prestashop>about_f53039c4d252aedaf77b9fe121b63dde'] = 'Spoznajte temo in pogon za PrestaShop';
+$_MODULE['<{wiseblock}prestashop>about_d323f187961a7c01bc2accc96f04ebf6'] = 'Več kot 20 modulov in tema, s katerimi prosto upravljate videz in vsebine trgovine ter si olajšate zaledne procese.';
+$_MODULE['<{wiseblock}prestashop>about_6ae1a2afe99364509005c2bd4dc3cbf6'] = 'Prenesite brezplačno z GitHuba';
+$_MODULE['<{wiseblock}prestashop>about_fbf7a6366d0bb10a12d66347e890a3c1'] = 'PHP 8.1 ali novejši';
+$_MODULE['<{wiseblock}prestashop>about_fd6a28b29f89b194298ebb0f921f274f'] = 'Licenca OSL-3.0';
 $_MODULE['<{wiseblock}prestashop>about_02f95d87a890c14e9293dc55e7f158a9'] = 'Oceni na GitHub';
 $_MODULE['<{wiseblock}prestashop>about_79bc8ea9cb24f51bf41148643f0b4309'] = 'Sistemske informacije';
 $_MODULE['<{wiseblock}prestashop>about_b3481e41d844a5db96ca7b7ae0f01495'] = 'Različica PrestaShop';
@@ -310,3 +315,123 @@ $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_7cd1c5ee4ad0920ed
 $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_86de38e03073f116727286119cb383ce'] = 'npr. poletna_kampanja';
 $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_7d6ef2589aed5a5e226b4342799feae5'] = 'Izpolnite eno ali obe polji. Če sta izpolnjeni obe, se morata obe ujemati.';
 $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_fa3bf9bbda655757e8f5434b06786714'] = 'Izbirno: Prikaži blok samo v določenih urah (npr. 09:00 - 18:00)';
+
+// ============================================
+// AdminWiseBlockBlockController.php - Search Query rule + new placeholders
+// ============================================
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_66c1b4c7f3dc385b68a9fa903ccd016d'] = 'Izraz';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_32c57e1c7103aa29482929513741be0c'] = 'Iskalni izraz vsebuje';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_b8e7f8da333cfd2ef753432810d6e158'] = 'npr. kitara, akustična';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_35604bd1a78c27868a4ea350610caee8'] = 'Ujema se, če iskalni izraz obiskovalca vsebuje to besedilo (ne glede na velike in male črke). Deluje samo na straneh z rezultati iskanja.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ec7e05dd469efdb09f868617087e0b67'] = 'Dodaj pravilo iskalnega izraza';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_b270372be5b4433b4736daaf25e1c74e'] = 'Vsebuje';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_13348442cc6a27032d2b4aa28b75a5d3'] = 'Iskanje';
+
+// ============================================
+// AdminWiseBlockBlockController.php - Head Code & Footer Code
+// ============================================
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_b18ef2293e8f4ed074c02c4ecc613b55'] = 'Koda head';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_1e7ca2f2cf52f57b8c7b9e4688ec97f7'] = 'Vstavljeno v head';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_4d25fc046c0380f03a66c1554728c5b3'] = 'Dodajte skripte, sloge ali meta oznake v razdelek head strani.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_5d368ff229ef355da463d2c630ea0514'] = 'Koda head za';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_6c239874112b7acab873d6af6a9b6ffa'] = 'Koda footer';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_85221ef025f4b7d349cf5fa6c3ca4ea9'] = 'Vstavljeno pred zaključno oznako body';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_198460f6727324c94da70f636393e114'] = 'Dodajte skripte, ki naj se naložijo na koncu strani. Idealno za sledenje ali analitiko.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_1c500b744b61a874f1fa0e367474321d'] = 'Koda footer za';
+
+// ============================================
+// placeholders.tpl - Placeholders Reference
+// ============================================
+$_MODULE['<{wiseblock}prestashop>placeholders_1387008f4426ad5e8518408893f53b01'] = 'Razpoložljivi nadomestni znaki';
+$_MODULE['<{wiseblock}prestashop>placeholders_531914020b39f24bb9164ff65281629a'] = 'Te nadomestne znake uporabite v vsebini HTML. Ob prikazu bloka bodo zamenjani z dejanskimi vrednostmi.';
+// Product group
+$_MODULE['<{wiseblock}prestashop>placeholders_deb10517653c255364175796ace3553f'] = 'Izdelek';
+$_MODULE['<{wiseblock}prestashop>placeholders_8162248c57b969d361eaecf3a0f217df'] = 'Samo strani izdelkov';
+$_MODULE['<{wiseblock}prestashop>placeholders_df644ae155e79abf54175bd15d75f363'] = 'Ime izdelka';
+$_MODULE['<{wiseblock}prestashop>placeholders_e82684eeb69d485da148ad7cebc77032'] = 'Referenca izdelka / SKU';
+$_MODULE['<{wiseblock}prestashop>placeholders_6167fa103904cf2fc83d468162752686'] = 'Črtna koda EAN13';
+$_MODULE['<{wiseblock}prestashop>placeholders_ad4c7beed61601926b2b2bdfd138f772'] = 'Ime proizvajalca';
+$_MODULE['<{wiseblock}prestashop>placeholders_45fb84641676e4a135ec5d4aa7841528'] = 'Ime privzete kategorije';
+$_MODULE['<{wiseblock}prestashop>placeholders_602bb7e5262efd38739161b107c38ea3'] = 'Opis privzete kategorije';
+$_MODULE['<{wiseblock}prestashop>placeholders_6d1775f3e9cc00330e22140c079ec565'] = 'URL strani izdelka';
+$_MODULE['<{wiseblock}prestashop>placeholders_5b1ee00bbf8d91d079941c1e456f2900'] = 'URL za dodajanje v košarico';
+$_MODULE['<{wiseblock}prestashop>placeholders_28785957d54048661c7cc642135f5aa1'] = 'Cena z DDV (oblikovana)';
+$_MODULE['<{wiseblock}prestashop>placeholders_7c0896ed573116366820e1f13f1fc1f6'] = 'Cena brez DDV (oblikovana)';
+$_MODULE['<{wiseblock}prestashop>placeholders_67d9d57a29d4dddd2387f572f7e63dcc'] = 'Teža izdelka z enoto';
+$_MODULE['<{wiseblock}prestashop>placeholders_f40d28a2f43a3623480ba2c9d4cb9bce'] = 'Količina na zalogi (število)';
+$_MODULE['<{wiseblock}prestashop>placeholders_4fdd802c2357060a5b7a9459251c348d'] = 'Besedilo stanja zaloge (Na zalogi / Ni na zalogi)';
+// Shop & Search group
+$_MODULE['<{wiseblock}prestashop>placeholders_4291ee33887c3bb08d76bbad5408fd06'] = 'Trgovina in iskanje';
+$_MODULE['<{wiseblock}prestashop>placeholders_ffe61bebc32cf64ade7789514bd34f88'] = 'Vse strani';
+$_MODULE['<{wiseblock}prestashop>placeholders_e93c33bd1341ab74195430daeb63db13'] = 'Ime trgovine';
+$_MODULE['<{wiseblock}prestashop>placeholders_a5d8f8678e875d76688d38a7eec89879'] = 'Trenutni iskalni izraz (stran z rezultati)';
+// Cart group
+$_MODULE['<{wiseblock}prestashop>placeholders_a85eba4c6c699122b2bb1387ea4813ad'] = 'Košarica';
+$_MODULE['<{wiseblock}prestashop>placeholders_c565522e0bac35bf4404ccbfcf0c5df9'] = 'Vmesna vsota košarice (oblikovana, brez dostave)';
+$_MODULE['<{wiseblock}prestashop>placeholders_b13b38439b219bb4d1d1850151df4f21'] = 'Skupna vsota košarice z dostavo (oblikovana)';
+$_MODULE['<{wiseblock}prestashop>placeholders_cb61a84a387ed93bc50d4cc0ac39d5a4'] = 'Število izdelkov v košarici';
+// Free Shipping group
+$_MODULE['<{wiseblock}prestashop>placeholders_b00b85425e74ed2c85dc3119b78ff2c3'] = 'Brezplačna dostava';
+$_MODULE['<{wiseblock}prestashop>placeholders_9507c01d14702aefd1b73fc4e742fd54'] = 'Oblikovan minimalni znesek naročila za brezplačno dostavo';
+$_MODULE['<{wiseblock}prestashop>placeholders_5a4768696639fac8a2b85e2eb3459301'] = 'Preostali znesek do brezplačne dostave (oblikovan)';
+$_MODULE['<{wiseblock}prestashop>placeholders_236aec1618d3d5c2b65b54145c97e3bb'] = 'Preostali znesek (število, 2 decimalni mesti)';
+$_MODULE['<{wiseblock}prestashop>placeholders_9d34b0a4c3a91695761ab65c723321d9'] = 'Odstotek napredka (0-100)';
+$_MODULE['<{wiseblock}prestashop>placeholders_f9d7dcf7522f634a13debac704965d4c'] = '1, če je dosežena brezplačna dostava, sicer 0';
+// Conditional Blocks group
+$_MODULE['<{wiseblock}prestashop>placeholders_c30894b5b71e88cf96b02e9f2ac5c5c9'] = 'Pogojni bloki';
+$_MODULE['<{wiseblock}prestashop>placeholders_b20e2f477cc4154ebde051f5910500fe'] = 'Vsebino ovijte s pogojnimi oznakami, da jo prikažete/skrijete glede na pogoje.';
+$_MODULE['<{wiseblock}prestashop>placeholders_5d12ab5628a7490d441c6a59c2049b6c'] = 'Prikaži samo, ko brezplačna dostava NI dosežena';
+$_MODULE['<{wiseblock}prestashop>placeholders_1afede0cedef499b662ce9b761f3ba3f'] = 'Prikaži samo, ko je brezplačna dostava dosežena';
+$_MODULE['<{wiseblock}prestashop>placeholders_27ce7f8b5623b2e2df568d64cf051607'] = 'Zaloga';
+$_MODULE['<{wiseblock}prestashop>placeholders_b862981fd6cc24e9aea4b396bf0a8de5'] = 'Prikaži samo, ko je izdelek na zalogi';
+$_MODULE['<{wiseblock}prestashop>placeholders_26352c77d7c3e646484e35abf01bb34b'] = 'Prikaži samo, ko izdelka ni na zalogi';
+$_MODULE['<{wiseblock}prestashop>placeholders_16d6e078b17a400f993e1683e9eeebaf'] = 'Prikaži samo, ko je zaloga nizka';
+$_MODULE['<{wiseblock}prestashop>placeholders_3601146c4e948c32b6424d2c0a7f0118'] = 'Cena';
+$_MODULE['<{wiseblock}prestashop>placeholders_4f9205dcaf4c40aa4d7a699ebc562136'] = 'Prikaži samo, ko je izdelek v akciji';
+$_MODULE['<{wiseblock}prestashop>placeholders_00fb93204db90d6e29883f9a73981b0c'] = 'Prikaži samo, ko je košarica prazna';
+$_MODULE['<{wiseblock}prestashop>placeholders_b52c63f7943ae640238059238800145a'] = 'Prikaži samo, ko košarica vsebuje izdelke';
+$_MODULE['<{wiseblock}prestashop>placeholders_ce26601dac0dea138b7295f02b7620a7'] = 'Stranka';
+$_MODULE['<{wiseblock}prestashop>placeholders_ce2d79466f3739f79d78cc1dce398e2d'] = 'Prikaži samo prijavljenim strankam';
+$_MODULE['<{wiseblock}prestashop>placeholders_1ffc67ca9f1b991ec34b0f55750409ef'] = 'Prikaži samo gostom (neprijavljenim)';
+$_MODULE['<{wiseblock}prestashop>placeholders_15c1d7c795643f12b5c5e350e9d4dc76'] = 'Prikaži samo, ko ima izdelek proizvajalca';
+$_MODULE['<{wiseblock}prestashop>placeholders_e9f282cb961254d59963cf86873c4e75'] = 'Prikaži samo za nove izdelke';
+$_MODULE['<{wiseblock}prestashop>placeholders_f39ce34e7440497db7e4eca4814570c1'] = 'Ime prijavljene stranke';
+
+// ============================================
+// AdminWiseBlockBlockController.php - v1.3.0 features
+// ============================================
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_8aeeeb44fccb3783f605146aa408bd78'] = 'Dnevi v tednu';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_fd29458ae58ac32a2d8734ed90ad51ec'] = 'Pon';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_2ddecde85408faf230652444db78cb72'] = 'Tor';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_510c292b1686eb070d9e90a575f74106'] = 'Sre';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ed5e8353dfc585f4c6b3a55d1a9fc01d'] = 'Čet';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ac616f844b9a5ea5a827bf7fb99b1ad5'] = 'Pet';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_13c7d2d737f81f7bf89aed9fbcd0ad55'] = 'Sob';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ef6572e4cd58bb39a3f4e82fc64fe9f0'] = 'Ned';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_4f26dc77660424da79af95af097b3a0d'] = 'Pustite vse označene za prikaz vsak dan';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_9dfc5d5738312210c3c75e68a468691d'] = 'Napredne možnosti';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_72ce543061ecfb35e86244887418dc8d'] = 'Samodejna osvežitev ob spremembi košarice';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_a740cfa84da52622d8ad1ce05738a30c'] = 'Osveži blok prek AJAX, ko se košarica spremeni (dodan/odstranjen izdelek)';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_548b01996f7e38592ac895430316f9fe'] = 'Leno nalaganje';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_4b64bc2dc777e2fb56ebde3cdd374bc2'] = 'Naloži vsebino bloka šele, ko postane viden na zaslonu';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_54fee414eb866d1816c93daa9facdf22'] = 'A/B testiranje';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_d15305d7a4e34e02489c74a5ef542f36'] = 'Izklopljeno';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_c088b60c6a76d4873be92ea5c6c53e14'] = 'Prikaži eno vsebino';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_475a62f7ed3dba4e9d2906bc04abc9cc'] = 'A/B test';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_a2a1a6f333f922db742e1955964d5a84'] = 'Naključna delitev 50/50';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_97653ab2bb54084fdf6a88b1097e5fbb'] = 'Ko je vklopljeno, obiskovalci naključno vidijo različico A ali B. Rezultati se beležijo v statistiki.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_bb31fbca2c165c519a8089a1addd6ce7'] = 'Ta vsebina se prikaže 50 % obiskovalcev, ko je A/B testiranje vklopljeno';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_7ec7ecdf8ea701708603e8ca54861c52'] = 'Vnesite vsebino različice B za';
+// A/B auto-optimize & stats (v1.4.0)
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_801aff42c23c5617b5868ae0724d4604'] = 'Samodejna optimizacija';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_3b34287018e3557705ecad150df22676'] = 'Samodejno izberi zmagovalno različico na podlagi CTR (razmerja klikov) po zbiranju zadostne količine podatkov.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_36a4eec66e454ea96bb583af998e69a9'] = 'Najmanjše število prikazov na različico';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_f79b3b62284f56950aa7597716bd4767'] = 'Vsaka različica mora doseči to število prikazov, preden je izbran zmagovalec.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_6f33ea784018f38082dfc16dbdb609a9'] = 'Rezultati A/B testa';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_85144ab5880edc8513c39cfeb1bd5a5e'] = 'Zmagovalec';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_492f18b60811bf85ce118c0c6a1a5c4a'] = 'Različica';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_6442a5c312774d3d7c0465ffc74b873e'] = 'Ta različica se zdaj prikazuje vsem obiskovalcem.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_639bf930739ffc48a6126a53fa89b778'] = 'Ponastavi test';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ed4832a84ee072b00a6740f657183598'] = 'Prikazi';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_cbdb553aaace16e77bb205e9bc3375ef'] = 'Kliki';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_d2b120ae682ccad269a9e00703874341'] = 'Ste prepričani? S tem boste izbrisali vso statistiko A/B testa in ponastavili zmagovalca.';

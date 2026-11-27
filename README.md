@@ -379,7 +379,13 @@ WiseBlock creates the following database tables:
 
 ## Support
 
-For bug reports and feature requests, please create an issue on GitHub.
+For bug reports and feature requests, please create an [issue on GitHub](https://github.com/GajewskiMarcin/WiseBlock/issues).
+
+If WiseBlock saves you time, you can support its development on **[Ko-fi](https://ko-fi.com/quinceproject)**.
+
+### From the same author
+
+**[Quince Project](https://quinceproject.github.io/)**: a theme and content engine for PrestaShop, extended with a suite of functional modules. Free and open source under OSL-3.0.
 
 ---
 

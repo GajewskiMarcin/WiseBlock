@@ -87,7 +87,9 @@ class AdminWiseBlockAboutController extends ModuleAdminController
             'github_issues_url' => $github_base . '/issues',
             'github_discussions_url' => $github_base . '/discussions',
             // Support link
-            'buymeacoffee_url' => 'https://buymeacoffee.com/marcingajewski',
+            'kofi_url' => 'https://ko-fi.com/quinceproject',
+            // Quince Project: the author's theme and module suite
+            'quince_url' => 'https://github.com/quinceproject',
         ));
 
         return $this->context->smarty->fetch(_PS_MODULE_DIR_.'wiseblock/views/templates/admin/about.tpl');

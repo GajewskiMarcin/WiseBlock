@@ -171,3 +171,6 @@ themes/default-bootstrap/modules/*/mails/*
 /vendor/
 /web/bundles/
 
+# Custom CSS saved from the module's "Custom CSS" tool: shop data, not part of the module
+/views/css/wiseblock-custom.css
+

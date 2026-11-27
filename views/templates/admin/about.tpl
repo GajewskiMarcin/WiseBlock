@@ -147,13 +147,13 @@
     {* Support the Project *}
     <div class="wb-tool-card" style="margin-bottom: 24px; background: linear-gradient(135deg, #eff6ff 0%, #f3e8ff 100%);">
         <div style="text-align: center; padding: 48px 24px;">
-            <h3 style="margin-bottom: 10px; font-size: 20px; font-weight: 600; color: var(--wb-gray-900);">{l s='Support the Project' mod='wiseblock'}</h3>
+            <h3 style="margin-bottom: 10px; font-size: 20px; font-weight: 600; color: var(--wb-gray-900); justify-content: center;">{l s='Support the Project' mod='wiseblock'}</h3>
             <p style="color: var(--wb-gray-600); margin-bottom: 28px; font-size: 16px;">
                 {l s='If you find WiseBlock useful, consider supporting development' mod='wiseblock'}
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center;">
-                <a href="{$buymeacoffee_url|escape:'html':'UTF-8'}" target="_blank" class="wb-btn-outlined" style="background: #eab308; color: white; border-color: #eab308;">
-                    <i class="icon-coffee"></i> {l s='Buy me a coffee' mod='wiseblock'}
+                <a href="{$kofi_url|escape:'html':'UTF-8'}" target="_blank" class="wb-btn-outlined" style="background: #eab308; color: white; border-color: #eab308;">
+                    <i class="icon-coffee"></i> {l s='Support on Ko-fi' mod='wiseblock'}
                 </a>
                 <a href="{$github_repo_url|escape:'html':'UTF-8'}" target="_blank" class="wb-btn-outlined" style="background: white;">
                     <i class="icon-star"></i> {l s='Star on GitHub' mod='wiseblock'}
@@ -161,6 +161,68 @@
             </div>
         </div>
     </div>
+
+    {* Quince Project: blok w wyglądzie nagłówka strony projektu
+       (quinceproject.github.io): pastelowa poświata, skośne smugi, znak
+       w gradiencie krojem Instrument Sans, kanciasty przycisk i pasek faktów. *}
+    <style>
+        @font-face { font-family: 'WB Instrument Sans'; font-weight: 400 600; font-display: swap;
+            src: url('{$module_dir|escape:'html':'UTF-8'}views/fonts/instrument-sans-latin-ext.woff2') format('woff2');
+            unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+        @font-face { font-family: 'WB Instrument Sans'; font-weight: 400 600; font-display: swap;
+            src: url('{$module_dir|escape:'html':'UTF-8'}views/fonts/instrument-sans-latin.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+        .wb-quince { position: relative; overflow: hidden; margin-bottom: 24px; border-radius: 12px; background: #f3f5f8; color: #161b28;
+            font-family: 'WB Instrument Sans', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+        {* Arkusz panelu WiseBlock wymusza Inter na każdym elemencie, więc krój bloku też musi być wymuszony. *}
+        .wb-quince, .wb-quince * { font-family: 'WB Instrument Sans', Arial, sans-serif !important; }
+        .wb-quince-wash { position: absolute; inset: 0; pointer-events: none; background:
+            radial-gradient(60% 70% at 8% 10%, rgba(255, 197, 107, .55), transparent 70%),
+            radial-gradient(45% 60% at 62% 0%, rgba(184, 174, 246, .55), transparent 70%),
+            radial-gradient(50% 70% at 100% 20%, rgba(143, 211, 247, .6), transparent 70%); }
+        .wb-quince-beam { position: absolute; top: -10%; width: 150px; height: 80%; background: rgba(255, 255, 255, .35); transform: skewY(-18deg); pointer-events: none; }
+        .wb-quince-beam.b1 { left: 6%; }
+        .wb-quince-beam.b2 { left: 24%; width: 90px; background: rgba(255, 255, 255, .25); }
+        .wb-quince-beam.b3 { left: 58%; width: 120px; }
+        .wb-quince-beam.b4 { left: 78%; width: 60px; background: rgba(255, 255, 255, .3); }
+        .wb-quince-in { position: relative; padding: 44px 56px 0; }
+        .wb-quince .wb-quince-lead { margin: 0; font-size: 22px; line-height: 1.45; color: #161b28; }
+        {* Wyściółka od dołu: gradient wypełnia tylko pudełko napisu, a ogonek „j” wychodził poza nie. *}
+        .wb-quince .wb-quince-word { display: inline-block; margin: 10px 0 -.22em; padding: 0 .04em .22em 0; font-size: 96px; line-height: .9; letter-spacing: -.06em; font-weight: 500;
+            background: linear-gradient(90deg, #ffc56b 0%, #b8aef6 55%, #8fd3f7 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .wb-quince .wb-quince-text { margin: 28px 0 0; max-width: 36rem; font-size: 19px; line-height: 1.5; color: #161b28; }
+        .wb-quince-cta { margin-top: 36px; }
+        .wb-quince a.wb-quince-btn { display: inline-flex; align-items: center; gap: 10px; height: 54px; padding: 0 28px; font-weight: 500; font-size: 16px; text-decoration: none; background: #1f2533; color: #fff; transition: background .15s; }
+        .wb-quince a.wb-quince-btn:hover, .wb-quince a.wb-quince-btn:focus { background: #0b1730; color: #fff; text-decoration: none; }
+        .wb-quince-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .wb-quince-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; padding-block: 24px 32px; border-top: 1px solid rgba(22, 27, 40, .15); }
+        .wb-quince-facts b { display: block; color: #161b28; font-weight: 500; font-size: 17px; }
+        @media (max-width: 767px) {
+            .wb-quince-in { padding: 32px 24px 0; }
+            .wb-quince .wb-quince-word { font-size: 56px; }
+            .wb-quince-facts { grid-template-columns: 1fr; gap: 12px; }
+        }
+    </style>
+    <section class="wb-quince">
+        <div class="wb-quince-wash" aria-hidden="true"></div>
+        <i class="wb-quince-beam b1" aria-hidden="true"></i><i class="wb-quince-beam b2" aria-hidden="true"></i><i class="wb-quince-beam b3" aria-hidden="true"></i><i class="wb-quince-beam b4" aria-hidden="true"></i>
+        <div class="wb-quince-in">
+            <p class="wb-quince-lead">{l s='Discover the theme and engine for PrestaShop' mod='wiseblock'}</p>
+            <p class="wb-quince-word">Quince Project</p>
+            <p class="wb-quince-text">{l s='A set of over 20 modules and a theme that let you freely manage the look and content of your shop and support back-office processes.' mod='wiseblock'}</p>
+            <div class="wb-quince-cta">
+                <a class="wb-quince-btn" href="{$quince_url|escape:'html':'UTF-8'}" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+                    {l s='Download for free from GitHub' mod='wiseblock'}
+                </a>
+            </div>
+            <div class="wb-quince-facts">
+                <div><b>PrestaShop 9.2</b></div>
+                <div><b>{l s='PHP 8.1 or newer' mod='wiseblock'}</b></div>
+                <div><b>{l s='OSL-3.0 licence' mod='wiseblock'}</b></div>
+            </div>
+        </div>
+    </section>
 
     {* System Information *}
     <div class="wb-tool-card wb-ce-accordion">

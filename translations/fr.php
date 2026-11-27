@@ -56,7 +56,12 @@ $_MODULE['<{wiseblock}prestashop>about_ac26bdde7ed74ae06f2deeeb1522f10d'] = 'Rej
 $_MODULE['<{wiseblock}prestashop>about_197b057f8d73ded07f9d4dd27678473d'] = 'Rejoindre la discussion';
 $_MODULE['<{wiseblock}prestashop>about_519cd44a1ebb9264df8f1fb153857995'] = 'Soutenir le projet';
 $_MODULE['<{wiseblock}prestashop>about_5ade246f54e3056845642aee3bd83eae'] = 'Si vous trouvez WiseBlock utile, pensez à soutenir le développement';
-$_MODULE['<{wiseblock}prestashop>about_41ce98493ec922bf9b7ea03f749aef64'] = 'Buy me a coffee';
+$_MODULE['<{wiseblock}prestashop>about_5dc4a5bd36dc8b81f76f1336858f6864'] = 'Soutenir sur Ko-fi';
+$_MODULE['<{wiseblock}prestashop>about_f53039c4d252aedaf77b9fe121b63dde'] = 'Découvrez le thème et le moteur pour PrestaShop';
+$_MODULE['<{wiseblock}prestashop>about_d323f187961a7c01bc2accc96f04ebf6'] = 'Plus de 20 modules et un thème pour gérer librement l\'apparence et le contenu de votre boutique, tout en facilitant les processus du back-office.';
+$_MODULE['<{wiseblock}prestashop>about_6ae1a2afe99364509005c2bd4dc3cbf6'] = 'Téléchargez-le gratuitement sur GitHub';
+$_MODULE['<{wiseblock}prestashop>about_fbf7a6366d0bb10a12d66347e890a3c1'] = 'PHP 8.1 ou version ultérieure';
+$_MODULE['<{wiseblock}prestashop>about_fd6a28b29f89b194298ebb0f921f274f'] = 'Licence OSL-3.0';
 $_MODULE['<{wiseblock}prestashop>about_02f95d87a890c14e9293dc55e7f158a9'] = 'Noter sur GitHub';
 $_MODULE['<{wiseblock}prestashop>about_79bc8ea9cb24f51bf41148643f0b4309'] = 'Informations système';
 $_MODULE['<{wiseblock}prestashop>about_b3481e41d844a5db96ca7b7ae0f01495'] = 'Version PrestaShop';
@@ -310,3 +315,123 @@ $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_7cd1c5ee4ad0920ed
 $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_86de38e03073f116727286119cb383ce'] = 'ex. promo_ete';
 $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_7d6ef2589aed5a5e226b4342799feae5'] = 'Remplissez un ou les deux champs. Si les deux sont remplis, les deux doivent correspondre.';
 $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_fa3bf9bbda655757e8f5434b06786714'] = 'Optionnel : Afficher le bloc uniquement pendant des heures spécifiques (ex. 09:00 - 18:00)';
+
+// ============================================
+// AdminWiseBlockBlockController.php - Search Query rule + new placeholders
+// ============================================
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_66c1b4c7f3dc385b68a9fa903ccd016d'] = 'Phrase';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_32c57e1c7103aa29482929513741be0c'] = 'La recherche contient';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_b8e7f8da333cfd2ef753432810d6e158'] = 'ex. guitare, acoustique';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_35604bd1a78c27868a4ea350610caee8'] = 'Correspond si la recherche du visiteur contient ce texte (insensible à la casse). Fonctionne uniquement sur les pages de résultats de recherche.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ec7e05dd469efdb09f868617087e0b67'] = 'Ajouter une règle de recherche';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_b270372be5b4433b4736daaf25e1c74e'] = 'Contient';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_13348442cc6a27032d2b4aa28b75a5d3'] = 'Recherche';
+
+// ============================================
+// AdminWiseBlockBlockController.php - Head Code & Footer Code
+// ============================================
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_b18ef2293e8f4ed074c02c4ecc613b55'] = 'Code Head';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_1e7ca2f2cf52f57b8c7b9e4688ec97f7'] = 'Injecté dans le head';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_4d25fc046c0380f03a66c1554728c5b3'] = 'Ajoutez des scripts, styles ou balises meta à la section head de la page.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_5d368ff229ef355da463d2c630ea0514'] = 'Code head pour';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_6c239874112b7acab873d6af6a9b6ffa'] = 'Code Footer';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_85221ef025f4b7d349cf5fa6c3ca4ea9'] = 'Injecté avant la fermeture du body';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_198460f6727324c94da70f636393e114'] = 'Ajoutez des scripts qui doivent se charger en fin de page. Idéal pour le tracking ou l\'analytique.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_1c500b744b61a874f1fa0e367474321d'] = 'Code footer pour';
+
+// ============================================
+// placeholders.tpl - Placeholders Reference
+// ============================================
+$_MODULE['<{wiseblock}prestashop>placeholders_1387008f4426ad5e8518408893f53b01'] = 'Placeholders disponibles';
+$_MODULE['<{wiseblock}prestashop>placeholders_531914020b39f24bb9164ff65281629a'] = 'Utilisez ces placeholders dans le contenu HTML. Ils seront remplacés par les valeurs réelles lors de l\'affichage du bloc.';
+// Product group
+$_MODULE['<{wiseblock}prestashop>placeholders_deb10517653c255364175796ace3553f'] = 'Produit';
+$_MODULE['<{wiseblock}prestashop>placeholders_8162248c57b969d361eaecf3a0f217df'] = 'Pages produit uniquement';
+$_MODULE['<{wiseblock}prestashop>placeholders_df644ae155e79abf54175bd15d75f363'] = 'Nom du produit';
+$_MODULE['<{wiseblock}prestashop>placeholders_e82684eeb69d485da148ad7cebc77032'] = 'Référence produit / SKU';
+$_MODULE['<{wiseblock}prestashop>placeholders_6167fa103904cf2fc83d468162752686'] = 'Code-barres EAN13';
+$_MODULE['<{wiseblock}prestashop>placeholders_ad4c7beed61601926b2b2bdfd138f772'] = 'Nom du fabricant';
+$_MODULE['<{wiseblock}prestashop>placeholders_45fb84641676e4a135ec5d4aa7841528'] = 'Nom de la catégorie par défaut';
+$_MODULE['<{wiseblock}prestashop>placeholders_602bb7e5262efd38739161b107c38ea3'] = 'Description de la catégorie par défaut';
+$_MODULE['<{wiseblock}prestashop>placeholders_6d1775f3e9cc00330e22140c079ec565'] = 'URL de la page produit';
+$_MODULE['<{wiseblock}prestashop>placeholders_5b1ee00bbf8d91d079941c1e456f2900'] = 'URL d\'ajout au panier';
+$_MODULE['<{wiseblock}prestashop>placeholders_28785957d54048661c7cc642135f5aa1'] = 'Prix TTC (formaté)';
+$_MODULE['<{wiseblock}prestashop>placeholders_7c0896ed573116366820e1f13f1fc1f6'] = 'Prix HT (formaté)';
+$_MODULE['<{wiseblock}prestashop>placeholders_67d9d57a29d4dddd2387f572f7e63dcc'] = 'Poids du produit avec unité';
+$_MODULE['<{wiseblock}prestashop>placeholders_f40d28a2f43a3623480ba2c9d4cb9bce'] = 'Quantité en stock (nombre)';
+$_MODULE['<{wiseblock}prestashop>placeholders_4fdd802c2357060a5b7a9459251c348d'] = 'Statut du stock (En stock / Rupture de stock)';
+// Shop & Search group
+$_MODULE['<{wiseblock}prestashop>placeholders_4291ee33887c3bb08d76bbad5408fd06'] = 'Boutique et recherche';
+$_MODULE['<{wiseblock}prestashop>placeholders_ffe61bebc32cf64ade7789514bd34f88'] = 'Toutes les pages';
+$_MODULE['<{wiseblock}prestashop>placeholders_e93c33bd1341ab74195430daeb63db13'] = 'Nom de la boutique';
+$_MODULE['<{wiseblock}prestashop>placeholders_a5d8f8678e875d76688d38a7eec89879'] = 'Recherche en cours (page de résultats de recherche)';
+// Cart group
+$_MODULE['<{wiseblock}prestashop>placeholders_a85eba4c6c699122b2bb1387ea4813ad'] = 'Panier';
+$_MODULE['<{wiseblock}prestashop>placeholders_c565522e0bac35bf4404ccbfcf0c5df9'] = 'Sous-total du panier (formaté, hors livraison)';
+$_MODULE['<{wiseblock}prestashop>placeholders_b13b38439b219bb4d1d1850151df4f21'] = 'Total du panier avec livraison (formaté)';
+$_MODULE['<{wiseblock}prestashop>placeholders_cb61a84a387ed93bc50d4cc0ac39d5a4'] = 'Nombre de produits dans le panier';
+// Free Shipping group
+$_MODULE['<{wiseblock}prestashop>placeholders_b00b85425e74ed2c85dc3119b78ff2c3'] = 'Livraison gratuite';
+$_MODULE['<{wiseblock}prestashop>placeholders_9507c01d14702aefd1b73fc4e742fd54'] = 'Montant minimum de commande formaté pour la livraison gratuite';
+$_MODULE['<{wiseblock}prestashop>placeholders_5a4768696639fac8a2b85e2eb3459301'] = 'Montant restant pour la livraison gratuite (formaté)';
+$_MODULE['<{wiseblock}prestashop>placeholders_236aec1618d3d5c2b65b54145c97e3bb'] = 'Montant restant (nombre brut, 2 décimales)';
+$_MODULE['<{wiseblock}prestashop>placeholders_9d34b0a4c3a91695761ab65c723321d9'] = 'Pourcentage de progression (0-100)';
+$_MODULE['<{wiseblock}prestashop>placeholders_f9d7dcf7522f634a13debac704965d4c'] = '1 si la livraison gratuite est atteinte, 0 sinon';
+// Conditional Blocks group
+$_MODULE['<{wiseblock}prestashop>placeholders_c30894b5b71e88cf96b02e9f2ac5c5c9'] = 'Blocs conditionnels';
+$_MODULE['<{wiseblock}prestashop>placeholders_b20e2f477cc4154ebde051f5910500fe'] = 'Entourez le contenu de balises conditionnelles pour l\'afficher ou le masquer selon des conditions.';
+$_MODULE['<{wiseblock}prestashop>placeholders_5d12ab5628a7490d441c6a59c2049b6c'] = 'Afficher uniquement si la livraison gratuite n\'est PAS atteinte';
+$_MODULE['<{wiseblock}prestashop>placeholders_1afede0cedef499b662ce9b761f3ba3f'] = 'Afficher uniquement si la livraison gratuite est atteinte';
+$_MODULE['<{wiseblock}prestashop>placeholders_27ce7f8b5623b2e2df568d64cf051607'] = 'Stock';
+$_MODULE['<{wiseblock}prestashop>placeholders_b862981fd6cc24e9aea4b396bf0a8de5'] = 'Afficher uniquement si le produit est en stock';
+$_MODULE['<{wiseblock}prestashop>placeholders_26352c77d7c3e646484e35abf01bb34b'] = 'Afficher uniquement si le produit est en rupture de stock';
+$_MODULE['<{wiseblock}prestashop>placeholders_16d6e078b17a400f993e1683e9eeebaf'] = 'Afficher uniquement si le stock est faible';
+$_MODULE['<{wiseblock}prestashop>placeholders_3601146c4e948c32b6424d2c0a7f0118'] = 'Prix';
+$_MODULE['<{wiseblock}prestashop>placeholders_4f9205dcaf4c40aa4d7a699ebc562136'] = 'Afficher uniquement si le produit est en promotion';
+$_MODULE['<{wiseblock}prestashop>placeholders_00fb93204db90d6e29883f9a73981b0c'] = 'Afficher uniquement si le panier est vide';
+$_MODULE['<{wiseblock}prestashop>placeholders_b52c63f7943ae640238059238800145a'] = 'Afficher uniquement si le panier contient des produits';
+$_MODULE['<{wiseblock}prestashop>placeholders_ce26601dac0dea138b7295f02b7620a7'] = 'Client';
+$_MODULE['<{wiseblock}prestashop>placeholders_ce2d79466f3739f79d78cc1dce398e2d'] = 'Afficher uniquement pour les clients connectés';
+$_MODULE['<{wiseblock}prestashop>placeholders_1ffc67ca9f1b991ec34b0f55750409ef'] = 'Afficher uniquement pour les visiteurs (non connectés)';
+$_MODULE['<{wiseblock}prestashop>placeholders_15c1d7c795643f12b5c5e350e9d4dc76'] = 'Afficher uniquement si le produit a un fabricant';
+$_MODULE['<{wiseblock}prestashop>placeholders_e9f282cb961254d59963cf86873c4e75'] = 'Afficher uniquement pour les nouveaux produits';
+$_MODULE['<{wiseblock}prestashop>placeholders_f39ce34e7440497db7e4eca4814570c1'] = 'Prénom du client connecté';
+
+// ============================================
+// AdminWiseBlockBlockController.php - v1.3.0 features
+// ============================================
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_8aeeeb44fccb3783f605146aa408bd78'] = 'Jours de la semaine';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_fd29458ae58ac32a2d8734ed90ad51ec'] = 'Lun';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_2ddecde85408faf230652444db78cb72'] = 'Mar';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_510c292b1686eb070d9e90a575f74106'] = 'Mer';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ed5e8353dfc585f4c6b3a55d1a9fc01d'] = 'Jeu';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ac616f844b9a5ea5a827bf7fb99b1ad5'] = 'Ven';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_13c7d2d737f81f7bf89aed9fbcd0ad55'] = 'Sam';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ef6572e4cd58bb39a3f4e82fc64fe9f0'] = 'Dim';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_4f26dc77660424da79af95af097b3a0d'] = 'Laissez tout coché pour afficher tous les jours';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_9dfc5d5738312210c3c75e68a468691d'] = 'Options avancées';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_72ce543061ecfb35e86244887418dc8d'] = 'Actualisation auto au changement du panier';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_a740cfa84da52622d8ad1ce05738a30c'] = 'Actualiser le bloc via AJAX lorsque le panier change (ajout/suppression de produit)';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_548b01996f7e38592ac895430316f9fe'] = 'Chargement différé';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_4b64bc2dc777e2fb56ebde3cdd374bc2'] = 'Charger le contenu du bloc uniquement lorsqu\'il devient visible à l\'écran';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_54fee414eb866d1816c93daa9facdf22'] = 'Tests A/B';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_d15305d7a4e34e02489c74a5ef542f36'] = 'Désactivé';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_c088b60c6a76d4873be92ea5c6c53e14'] = 'Afficher un seul contenu';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_475a62f7ed3dba4e9d2906bc04abc9cc'] = 'Test A/B';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_a2a1a6f333f922db742e1955964d5a84'] = 'Répartition aléatoire 50/50';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_97653ab2bb54084fdf6a88b1097e5fbb'] = 'Lorsqu\'il est activé, les visiteurs voient aléatoirement la variante A ou B. Les résultats sont suivis dans les statistiques.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_bb31fbca2c165c519a8089a1addd6ce7'] = 'Ce contenu est affiché à 50% des visiteurs lorsque les tests A/B sont activés';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_7ec7ecdf8ea701708603e8ca54861c52'] = 'Saisissez le contenu de la variante B pour';
+// A/B auto-optimize & stats (v1.4.0)
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_801aff42c23c5617b5868ae0724d4604'] = 'Optimisation automatique';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_3b34287018e3557705ecad150df22676'] = 'Sélectionner automatiquement la variante gagnante après avoir collecté suffisamment de données, sur la base du CTR (taux de clics).';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_36a4eec66e454ea96bb583af998e69a9'] = 'Nombre minimum d\'affichages par variante';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_f79b3b62284f56950aa7597716bd4767'] = 'Chaque variante doit atteindre ce nombre d\'affichages avant qu\'un gagnant soit sélectionné.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_6f33ea784018f38082dfc16dbdb609a9'] = 'Résultats du test A/B';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_85144ab5880edc8513c39cfeb1bd5a5e'] = 'Gagnant';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_492f18b60811bf85ce118c0c6a1a5c4a'] = 'Variante';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_6442a5c312774d3d7c0465ffc74b873e'] = 'Cette variante est désormais affichée à tous les visiteurs.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_639bf930739ffc48a6126a53fa89b778'] = 'Réinitialiser le test';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ed4832a84ee072b00a6740f657183598'] = 'Affichages';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_cbdb553aaace16e77bb205e9bc3375ef'] = 'Clics';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_d2b120ae682ccad269a9e00703874341'] = 'Êtes-vous sûr ? Cela supprimera toutes les statistiques du test A/B et réinitialisera le gagnant.';

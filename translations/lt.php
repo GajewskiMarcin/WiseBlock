@@ -56,7 +56,12 @@ $_MODULE['<{wiseblock}prestashop>about_ac26bdde7ed74ae06f2deeeb1522f10d'] = 'Pri
 $_MODULE['<{wiseblock}prestashop>about_197b057f8d73ded07f9d4dd27678473d'] = 'Prisijungti prie diskusijos';
 $_MODULE['<{wiseblock}prestashop>about_519cd44a1ebb9264df8f1fb153857995'] = 'Paremti projektą';
 $_MODULE['<{wiseblock}prestashop>about_5ade246f54e3056845642aee3bd83eae'] = 'Jei WiseBlock jums naudingas, apsvarstykite galimybę paremti vystymą';
-$_MODULE['<{wiseblock}prestashop>about_41ce98493ec922bf9b7ea03f749aef64'] = 'Nupirkite man kavos';
+$_MODULE['<{wiseblock}prestashop>about_5dc4a5bd36dc8b81f76f1336858f6864'] = 'Paremti per Ko-fi';
+$_MODULE['<{wiseblock}prestashop>about_f53039c4d252aedaf77b9fe121b63dde'] = 'Susipažinkite su PrestaShop tema ir varikliu';
+$_MODULE['<{wiseblock}prestashop>about_d323f187961a7c01bc2accc96f04ebf6'] = 'Daugiau nei 20 modulių ir tema, leidžiantys laisvai valdyti parduotuvės išvaizdą bei turinį ir palengvinantys administravimo procesus.';
+$_MODULE['<{wiseblock}prestashop>about_6ae1a2afe99364509005c2bd4dc3cbf6'] = 'Atsisiųskite nemokamai iš GitHub';
+$_MODULE['<{wiseblock}prestashop>about_fbf7a6366d0bb10a12d66347e890a3c1'] = 'PHP 8.1 arba naujesnė';
+$_MODULE['<{wiseblock}prestashop>about_fd6a28b29f89b194298ebb0f921f274f'] = 'OSL-3.0 licencija';
 $_MODULE['<{wiseblock}prestashop>about_02f95d87a890c14e9293dc55e7f158a9'] = 'Įvertinkite GitHub';
 $_MODULE['<{wiseblock}prestashop>about_79bc8ea9cb24f51bf41148643f0b4309'] = 'Sistemos informacija';
 $_MODULE['<{wiseblock}prestashop>about_b3481e41d844a5db96ca7b7ae0f01495'] = 'PrestaShop versija';
@@ -310,3 +315,123 @@ $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_7cd1c5ee4ad0920ed
 $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_86de38e03073f116727286119cb383ce'] = 'pvz. vasaros_akcija';
 $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_7d6ef2589aed5a5e226b4342799feae5'] = 'Užpildykite vieną arba abu laukus. Jei užpildyti abu, abu turi atitikti.';
 $_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_fa3bf9bbda655757e8f5434b06786714'] = 'Neprivaloma: Rodyti bloką tik tam tikromis valandomis (pvz. 09:00 - 18:00)';
+
+// ============================================
+// AdminWiseBlockBlockController.php - Search Query rule + new placeholders
+// ============================================
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_66c1b4c7f3dc385b68a9fa903ccd016d'] = 'Frazė';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_32c57e1c7103aa29482929513741be0c'] = 'Paieškos frazėje yra';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_b8e7f8da333cfd2ef753432810d6e158'] = 'pvz. gitara, akustinė';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_35604bd1a78c27868a4ea350610caee8'] = 'Atitinka, jei lankytojo paieškos frazėje yra šis tekstas (neatsižvelgiant į didžiąsias ir mažąsias raides). Veikia tik paieškos rezultatų puslapiuose.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ec7e05dd469efdb09f868617087e0b67'] = 'Pridėti paieškos frazės taisyklę';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_b270372be5b4433b4736daaf25e1c74e'] = 'Yra';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_13348442cc6a27032d2b4aa28b75a5d3'] = 'Paieška';
+
+// ============================================
+// AdminWiseBlockBlockController.php - Head Code & Footer Code
+// ============================================
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_b18ef2293e8f4ed074c02c4ecc613b55'] = 'Head kodas';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_1e7ca2f2cf52f57b8c7b9e4688ec97f7'] = 'Įterpiamas į head';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_4d25fc046c0380f03a66c1554728c5b3'] = 'Pridėkite skriptus, stilius arba meta žymes į puslapio head skiltį.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_5d368ff229ef355da463d2c630ea0514'] = 'Head kodas, kalba:';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_6c239874112b7acab873d6af6a9b6ffa'] = 'Footer kodas';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_85221ef025f4b7d349cf5fa6c3ca4ea9'] = 'Įterpiamas prieš uždarant body';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_198460f6727324c94da70f636393e114'] = 'Pridėkite skriptus, kurie turi būti įkeliami puslapio pabaigoje. Idealiai tinka sekimui ar analitikai.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_1c500b744b61a874f1fa0e367474321d'] = 'Footer kodas, kalba:';
+
+// ============================================
+// placeholders.tpl - Placeholders Reference
+// ============================================
+$_MODULE['<{wiseblock}prestashop>placeholders_1387008f4426ad5e8518408893f53b01'] = 'Galimi rezervuotojai';
+$_MODULE['<{wiseblock}prestashop>placeholders_531914020b39f24bb9164ff65281629a'] = 'Naudokite šiuos rezervuotojus HTML turinyje. Rodant bloką jie bus pakeisti tikromis reikšmėmis.';
+// Product group
+$_MODULE['<{wiseblock}prestashop>placeholders_deb10517653c255364175796ace3553f'] = 'Produktas';
+$_MODULE['<{wiseblock}prestashop>placeholders_8162248c57b969d361eaecf3a0f217df'] = 'Tik produktų puslapiai';
+$_MODULE['<{wiseblock}prestashop>placeholders_df644ae155e79abf54175bd15d75f363'] = 'Produkto pavadinimas';
+$_MODULE['<{wiseblock}prestashop>placeholders_e82684eeb69d485da148ad7cebc77032'] = 'Produkto kodas / SKU';
+$_MODULE['<{wiseblock}prestashop>placeholders_6167fa103904cf2fc83d468162752686'] = 'EAN13 brūkšninis kodas';
+$_MODULE['<{wiseblock}prestashop>placeholders_ad4c7beed61601926b2b2bdfd138f772'] = 'Gamintojo pavadinimas';
+$_MODULE['<{wiseblock}prestashop>placeholders_45fb84641676e4a135ec5d4aa7841528'] = 'Numatytosios kategorijos pavadinimas';
+$_MODULE['<{wiseblock}prestashop>placeholders_602bb7e5262efd38739161b107c38ea3'] = 'Numatytosios kategorijos aprašymas';
+$_MODULE['<{wiseblock}prestashop>placeholders_6d1775f3e9cc00330e22140c079ec565'] = 'Produkto puslapio URL';
+$_MODULE['<{wiseblock}prestashop>placeholders_5b1ee00bbf8d91d079941c1e456f2900'] = 'Įdėjimo į krepšelį URL';
+$_MODULE['<{wiseblock}prestashop>placeholders_28785957d54048661c7cc642135f5aa1'] = 'Kaina su mokesčiais (suformatuota)';
+$_MODULE['<{wiseblock}prestashop>placeholders_7c0896ed573116366820e1f13f1fc1f6'] = 'Kaina be mokesčių (suformatuota)';
+$_MODULE['<{wiseblock}prestashop>placeholders_67d9d57a29d4dddd2387f572f7e63dcc'] = 'Produkto svoris su matavimo vienetu';
+$_MODULE['<{wiseblock}prestashop>placeholders_f40d28a2f43a3623480ba2c9d4cb9bce'] = 'Kiekis sandėlyje (skaičius)';
+$_MODULE['<{wiseblock}prestashop>placeholders_4fdd802c2357060a5b7a9459251c348d'] = 'Atsargų būsenos tekstas (Yra sandėlyje / Nėra sandėlyje)';
+// Shop & Search group
+$_MODULE['<{wiseblock}prestashop>placeholders_4291ee33887c3bb08d76bbad5408fd06'] = 'Parduotuvė ir paieška';
+$_MODULE['<{wiseblock}prestashop>placeholders_ffe61bebc32cf64ade7789514bd34f88'] = 'Visi puslapiai';
+$_MODULE['<{wiseblock}prestashop>placeholders_e93c33bd1341ab74195430daeb63db13'] = 'Parduotuvės pavadinimas';
+$_MODULE['<{wiseblock}prestashop>placeholders_a5d8f8678e875d76688d38a7eec89879'] = 'Dabartinė paieškos frazė (paieškos rezultatų puslapis)';
+// Cart group
+$_MODULE['<{wiseblock}prestashop>placeholders_a85eba4c6c699122b2bb1387ea4813ad'] = 'Krepšelis';
+$_MODULE['<{wiseblock}prestashop>placeholders_c565522e0bac35bf4404ccbfcf0c5df9'] = 'Krepšelio tarpinė suma (suformatuota, be pristatymo)';
+$_MODULE['<{wiseblock}prestashop>placeholders_b13b38439b219bb4d1d1850151df4f21'] = 'Krepšelio bendra suma su pristatymu (suformatuota)';
+$_MODULE['<{wiseblock}prestashop>placeholders_cb61a84a387ed93bc50d4cc0ac39d5a4'] = 'Produktų skaičius krepšelyje';
+// Free Shipping group
+$_MODULE['<{wiseblock}prestashop>placeholders_b00b85425e74ed2c85dc3119b78ff2c3'] = 'Nemokamas pristatymas';
+$_MODULE['<{wiseblock}prestashop>placeholders_9507c01d14702aefd1b73fc4e742fd54'] = 'Suformatuota minimali užsakymo suma nemokamam pristatymui';
+$_MODULE['<{wiseblock}prestashop>placeholders_5a4768696639fac8a2b85e2eb3459301'] = 'Iki nemokamo pristatymo trūkstama suma (suformatuota)';
+$_MODULE['<{wiseblock}prestashop>placeholders_236aec1618d3d5c2b65b54145c97e3bb'] = 'Trūkstama suma (neapdorotas skaičius, 2 skaitmenys po kablelio)';
+$_MODULE['<{wiseblock}prestashop>placeholders_9d34b0a4c3a91695761ab65c723321d9'] = 'Pažangos procentas (0-100)';
+$_MODULE['<{wiseblock}prestashop>placeholders_f9d7dcf7522f634a13debac704965d4c'] = '1, jei nemokamas pristatymas pasiektas, kitu atveju 0';
+// Conditional Blocks group
+$_MODULE['<{wiseblock}prestashop>placeholders_c30894b5b71e88cf96b02e9f2ac5c5c9'] = 'Sąlyginiai blokai';
+$_MODULE['<{wiseblock}prestashop>placeholders_b20e2f477cc4154ebde051f5910500fe'] = 'Apgaubkite turinį sąlyginėmis žymėmis, kad jis būtų rodomas/slepiamas pagal sąlygas.';
+$_MODULE['<{wiseblock}prestashop>placeholders_5d12ab5628a7490d441c6a59c2049b6c'] = 'Rodyti tik kai nemokamas pristatymas NEPASIEKTAS';
+$_MODULE['<{wiseblock}prestashop>placeholders_1afede0cedef499b662ce9b761f3ba3f'] = 'Rodyti tik kai nemokamas pristatymas pasiektas';
+$_MODULE['<{wiseblock}prestashop>placeholders_27ce7f8b5623b2e2df568d64cf051607'] = 'Atsargos';
+$_MODULE['<{wiseblock}prestashop>placeholders_b862981fd6cc24e9aea4b396bf0a8de5'] = 'Rodyti tik kai produktas yra sandėlyje';
+$_MODULE['<{wiseblock}prestashop>placeholders_26352c77d7c3e646484e35abf01bb34b'] = 'Rodyti tik kai produkto nėra sandėlyje';
+$_MODULE['<{wiseblock}prestashop>placeholders_16d6e078b17a400f993e1683e9eeebaf'] = 'Rodyti tik kai atsargų mažai';
+$_MODULE['<{wiseblock}prestashop>placeholders_3601146c4e948c32b6424d2c0a7f0118'] = 'Kaina';
+$_MODULE['<{wiseblock}prestashop>placeholders_4f9205dcaf4c40aa4d7a699ebc562136'] = 'Rodyti tik kai produktas parduodamas su nuolaida';
+$_MODULE['<{wiseblock}prestashop>placeholders_00fb93204db90d6e29883f9a73981b0c'] = 'Rodyti tik kai krepšelis tuščias';
+$_MODULE['<{wiseblock}prestashop>placeholders_b52c63f7943ae640238059238800145a'] = 'Rodyti tik kai krepšelyje yra produktų';
+$_MODULE['<{wiseblock}prestashop>placeholders_ce26601dac0dea138b7295f02b7620a7'] = 'Klientas';
+$_MODULE['<{wiseblock}prestashop>placeholders_ce2d79466f3739f79d78cc1dce398e2d'] = 'Rodyti tik prisijungusiems klientams';
+$_MODULE['<{wiseblock}prestashop>placeholders_1ffc67ca9f1b991ec34b0f55750409ef'] = 'Rodyti tik svečiams (neprisijungusiems)';
+$_MODULE['<{wiseblock}prestashop>placeholders_15c1d7c795643f12b5c5e350e9d4dc76'] = 'Rodyti tik kai produktas turi gamintoją';
+$_MODULE['<{wiseblock}prestashop>placeholders_e9f282cb961254d59963cf86873c4e75'] = 'Rodyti tik naujiems produktams';
+$_MODULE['<{wiseblock}prestashop>placeholders_f39ce34e7440497db7e4eca4814570c1'] = 'Prisijungusio kliento vardas';
+
+// ============================================
+// AdminWiseBlockBlockController.php - v1.3.0 features
+// ============================================
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_8aeeeb44fccb3783f605146aa408bd78'] = 'Savaitės dienos';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_fd29458ae58ac32a2d8734ed90ad51ec'] = 'Pr';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_2ddecde85408faf230652444db78cb72'] = 'An';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_510c292b1686eb070d9e90a575f74106'] = 'Tr';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ed5e8353dfc585f4c6b3a55d1a9fc01d'] = 'Kt';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ac616f844b9a5ea5a827bf7fb99b1ad5'] = 'Pn';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_13c7d2d737f81f7bf89aed9fbcd0ad55'] = 'Š';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ef6572e4cd58bb39a3f4e82fc64fe9f0'] = 'S';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_4f26dc77660424da79af95af097b3a0d'] = 'Palikite visas pažymėtas, kad būtų rodoma kasdien';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_9dfc5d5738312210c3c75e68a468691d'] = 'Išplėstinės parinktys';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_72ce543061ecfb35e86244887418dc8d'] = 'Automatinis atnaujinimas pasikeitus krepšeliui';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_a740cfa84da52622d8ad1ce05738a30c'] = 'Atnaujinti bloką per AJAX, kai krepšelis pasikeičia (produkto pridėjimas/pašalinimas)';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_548b01996f7e38592ac895430316f9fe'] = 'Atidėtas įkėlimas';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_4b64bc2dc777e2fb56ebde3cdd374bc2'] = 'Įkelti bloko turinį tik tada, kai jis tampa matomas ekrane';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_54fee414eb866d1816c93daa9facdf22'] = 'A/B testavimas';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_d15305d7a4e34e02489c74a5ef542f36'] = 'Išjungta';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_c088b60c6a76d4873be92ea5c6c53e14'] = 'Rodyti vieną turinį';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_475a62f7ed3dba4e9d2906bc04abc9cc'] = 'A/B testas';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_a2a1a6f333f922db742e1955964d5a84'] = 'Atsitiktinis padalijimas 50/50';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_97653ab2bb54084fdf6a88b1097e5fbb'] = 'Įjungus, lankytojai atsitiktinai mato A arba B variantą. Rezultatai sekami statistikoje.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_bb31fbca2c165c519a8089a1addd6ce7'] = 'Šis turinys rodomas 50% lankytojų, kai įjungtas A/B testavimas';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_7ec7ecdf8ea701708603e8ca54861c52'] = 'Įveskite B varianto turinį, kalba:';
+// A/B auto-optimize & stats (v1.4.0)
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_801aff42c23c5617b5868ae0724d4604'] = 'Automatinis optimizavimas';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_3b34287018e3557705ecad150df22676'] = 'Automatiškai pasirinkti laimėjusį variantą, surinkus pakankamai duomenų, pagal CTR (paspaudimų rodiklį).';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_36a4eec66e454ea96bb583af998e69a9'] = 'Minimalus parodymų skaičius vienam variantui';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_f79b3b62284f56950aa7597716bd4767'] = 'Kiekvienas variantas turi pasiekti šį parodymų skaičių, prieš pasirenkant laimėtoją.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_6f33ea784018f38082dfc16dbdb609a9'] = 'A/B testo rezultatai';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_85144ab5880edc8513c39cfeb1bd5a5e'] = 'Laimėtojas';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_492f18b60811bf85ce118c0c6a1a5c4a'] = 'Variantas';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_6442a5c312774d3d7c0465ffc74b873e'] = 'Šis variantas dabar rodomas visiems lankytojams.';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_639bf930739ffc48a6126a53fa89b778'] = 'Atstatyti testą';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_ed4832a84ee072b00a6740f657183598'] = 'Parodymai';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_cbdb553aaace16e77bb205e9bc3375ef'] = 'Paspaudimai';
+$_MODULE['<{wiseblock}prestashop>adminwiseblockblockcontroller_d2b120ae682ccad269a9e00703874341'] = 'Ar tikrai? Bus ištrinta visa A/B testo statistika ir atstatytas laimėtojas.';
